@@ -112,17 +112,17 @@ export default function Home() {
 
                                 <a href="https://github.com/MomoCrash" target={"_blank"}>
                                     <div className={"profile-social"}
-                                         style={{backgroundImage: "url(" + "public/github.png" + ")"}}></div>
+                                         style={{backgroundImage: "url(" + "/portfolio/public/github.png" + ")"}}></div>
                                 </a>
 
                                 <a href="https://www.linkedin.com/in/ethan-gilotin-788015293/" target={"_blank"}>
                                     <div className={"profile-social"}
-                                         style={{backgroundImage: "url(" + "public/linkedin.png" + ")"}}></div>
+                                         style={{backgroundImage: "url(" + "/portfolio/public/linkedin.png" + ")"}}></div>
                                 </a>
 
                                 <a href="https://momocrash.itch.io/" target={"_blank"}>
                                     <div className={"profile-social"}
-                                         style={{backgroundImage: "url(" + "public/itch-io.png" + ")"}}></div>
+                                         style={{backgroundImage: "url(" + "/portfolio/public/itch-io.png" + ")"}}></div>
                                 </a>
                             </div>
                         </div>
@@ -205,7 +205,7 @@ export default function Home() {
 
                 </div>
 
-                <div className={"container in-column"}>
+                <div id={"projects"} className={"container in-column"}>
 
                     <div className={"card"}>
 

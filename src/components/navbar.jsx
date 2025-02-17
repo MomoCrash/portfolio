@@ -38,11 +38,14 @@ function Navbar() {
                         className={"pprogress-bar-percent"}></span> </span> </Link>
                 </li>
                 <li onClick={removeActive}>
-                    <Link to="/#projects" className="navLink"> Mes projets <span className={"pprogress-bar"}> <span
+                    <Link to={{
+                        pathname: "/",
+                        hash: "#projects"
+                    }}  className="navLink"> Mes projets <span className={"pprogress-bar"}> <span
                         className={"pprogress-bar-percent"}></span> </span> </Link>
                 </li>
                 <li onClick={removeActive}>
-                    <Link to="/#contact-me" className="navLink"> Me contacter <span className={"pprogress-bar"}> <span
+                    <Link to="/contact" className="navLink"> Me contacter <span className={"pprogress-bar"}> <span
                         className={"pprogress-bar-percent"}></span> </span></Link>
                 </li>
             </ul>

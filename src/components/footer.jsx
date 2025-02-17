@@ -6,9 +6,9 @@ export default function Footer() {
             <div className={"in-row"}>
                 <p>© 2025 Ethan Gilotin. All Rights Reserved.</p>
                 <div className={"footer-link"}>
-                    <a href={"contact"}> Home </a>
+                    <a href={"#"}> Home </a>
                     <a href={"contact"}> Contacts </a>
-                    <a href={"contact"}> Credits </a>
+                    <a href={"credit"}> Credits </a>
                 </div>
             </div>
         </div>

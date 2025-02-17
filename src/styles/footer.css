@@ -16,8 +16,10 @@
 
 .footer-link {
     display: flex;
+    padding: 5px;
     justify-content: space-around;
-    border-color: ;
+    border-radius: 10px;
+    border: 1px solid white;
 }
 
 .footer-link a {
