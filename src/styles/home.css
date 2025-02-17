@@ -32,6 +32,18 @@
     transition: ease-in-out 0.2s;
 }
 
+.profile-github {
+    background-image: url("../../public/github.png");
+}
+
+.profile-linkdin {
+    background-image: url("../../public/linkdin.png");
+}
+
+.profile-itch {
+    background-image: url("../../public/itch-io.png");
+}
+
 .profile-social:hover {
     transform: scale(1.1, 1.1);
 }
@@ -151,6 +163,14 @@
     margin: 0 10px;
     color: whitesmoke;
     max-width: 500px;
+    width: 100%;
+}
+
+.project-desc-big {
+    font-family: CaviarDreams;
+    font-size: 20px;
+    padding: 30px;
+    color: whitesmoke;
     width: 100%;
 }
 

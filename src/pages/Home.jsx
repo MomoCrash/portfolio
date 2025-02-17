@@ -28,7 +28,7 @@ export default function Home() {
         </>,
 
         <>
-            <div className={"project-desc"}>
+            <div className={"project-desc-big"}>
                 Nichii est un projet de jeu mobile, développé en parallèle des cours sur Unity, le jeu est un idle
                 farmer vous avez pour mission d'avoir le plus de ressouces naturelles ou transformé
             </div>
@@ -111,18 +111,15 @@ export default function Home() {
                             <div className={"container in-row-forced"}>
 
                                 <a href="https://github.com/MomoCrash" target={"_blank"}>
-                                    <div className={"profile-social"}
-                                         style={{backgroundImage: "url(" + "/portfolio/public/github.png" + ")"}}></div>
+                                    <div className={"profile-social profile-github"} ></div>
                                 </a>
 
                                 <a href="https://www.linkedin.com/in/ethan-gilotin-788015293/" target={"_blank"}>
-                                    <div className={"profile-social"}
-                                         style={{backgroundImage: "url(" + "/portfolio/public/linkedin.png" + ")"}}></div>
+                                    <div className={"profile-social profile-linkdin"} ></div>
                                 </a>
 
                                 <a href="https://momocrash.itch.io/" target={"_blank"}>
-                                    <div className={"profile-social"}
-                                         style={{backgroundImage: "url(" + "/portfolio/public/itch-io.png" + ")"}}></div>
+                                    <div className={"profile-social profile-itch"} ></div>
                                 </a>
                             </div>
                         </div>
