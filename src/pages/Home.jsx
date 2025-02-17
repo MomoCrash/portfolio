@@ -384,11 +384,6 @@ export default function Home() {
                             </span>
                             <p className={"profile-separator"}></p>
                             <div className={"project-skills in-row"}>
-                                {/*                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "lightsalmon"}}> Mobile </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "lightskyblue"}}> Programming </span>
-                                <span className={"project-skills-descriptor"} style={{borderColor: "lightgreen"}}> Game Design </span>*/}
 
                                 <span className={"project-skills-descriptor"} style={{borderColor: "#fff47f"}}>     Team Work </span>
                                 <span className={"project-skills-descriptor"}

@@ -500,6 +500,7 @@ button:hover .button-text {
 
     .title-name {
         font-size: 2.1em;
+        padding-left: 0;
     }
 
     .projet-tag {
@@ -516,6 +517,9 @@ button:hover .button-text {
 
     .logo-profile {
         margin-top: 50px;
+        width: 200px;
+        height: 200px;
+        background-position: center -150px;
     }
 
     .profile-text-container {
@@ -557,7 +561,8 @@ button:hover .button-text {
     }
 
     .project-desc {
-        margin: 70px 0;
+        margin: 5vh 0;
+        font-size: 5vw;
     }
 
     .profile-separator {
@@ -566,8 +571,9 @@ button:hover .button-text {
     }
 
     .card {
-        height: 100vh;
+        height: calc(70vh + 60vw);
     }
+
 
     button.learn-more {
         right: 10px;
