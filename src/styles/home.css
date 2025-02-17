@@ -45,7 +45,7 @@
     border-radius: 50%;
     width: 300px;
     height: 300px;
-    margin: 0 170px;
+    margin: 0 auto;
 }
 
 .profile-separator {
@@ -109,6 +109,10 @@
     transition: all .2s ease;
 }
 
+.in-row-forced {
+    flex-direction: row;
+}
+
 .in-row {
     flex-direction: row;
 }
@@ -146,12 +150,14 @@
     font-size: 20px;
     margin: 0 10px;
     color: whitesmoke;
+    max-width: 500px;
+    width: 100%;
 }
 
 .project-objectives {
     font-family: CaviarDreams;
     font-size: 20px;
-    margin: 0 10px;
+    margin: 5px 10px;
     color: whitesmoke;
 }
 
@@ -166,10 +172,28 @@
 }
 
 .plain {
-    background-color: color-mix(in srgb, #536DFE 15%, #121212 85%);
+    background-color: color-mix(in srgb, #536DFE 15%, #4D65E9 85%);
     width:18px;
     height: 18px;
     margin: auto auto;
+}
+
+.project-indicator {
+    position: absolute;
+    z-index: 1000;
+
+    background-image: url("../../public/arrow.png");
+    background-size: 40px;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+}
+
+.project-indicator p {
+    transform: scaleX(-1);
+    font-size: 25px;
+    font-family: Happy Town;
+    color: white;
 }
 
 .project-image {
@@ -197,6 +221,8 @@
 
 .projet-tag {
     font-family: CaviarDreams;
+    color: black;
+    border: 1px solid #121212;
     border-radius: 10px 10px;
     margin: auto 0 auto 5px;
     font-size: x-large;
@@ -204,11 +230,60 @@
     padding: 0 10px;
 }
 
-.projet-skills {
+.percent-bar {
+
+    display: flex;
+    position: relative;
+
+    border-radius: 10px;
+
+    margin: 0 auto 0px auto;
+
+    width: 80%;
+    height: 15px;
+}
+
+.percent-bar{
+    position: relative;
+}
+
+.percent-bar .percent-bar-progress {
+    z-index: 11;
+    background-color: #ffb129;
+
+    border: 1px solid #121212;
+
+    height: 15px;
+    width: 0;
+
+    transition: all .2s ease-out;
+}
+
+.percent-bar {
+    left: 0;
+    background-color: white;
+}
+
+.project-mobile-col {
     display: flex;
     flex-direction: column;
-    width: 150px;
+}
+
+.project-skills {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
     justify-content: center;
+}
+
+.project-skills-descriptor {
+    font-family: CaviarDreams;
+    color: white;
+    width: 80%;
+    margin: 3px auto;
+    border-radius: 10px 10px 10px 10px;
+    border-style: solid;
+    border-width: 2px 2px 5px 4px;
 }
 
 .small-text {
@@ -318,89 +393,6 @@
     box-shadow: 0px -5px 3px 1px #2a547066;
 }
 
-@media (max-width: 1000px) {
-    .card {
-        align-items: center;
-        position: relative;
-        top: 200px;
-    }
-    .container {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        height: 400px;
-        width: 400px;
-    }
-    a:hover {
-        color: color-mix(in srgb, #536DFE 10%, #121212 90%);
-    }
-    button {
-        background-color: #f9f9f9;
-    }
-
-    .chevrons {
-        padding: 6px 0 0 0;
-        margin-left: -3px;
-        margin-top: 48px;
-        width: 30px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .chevrondown {
-        margin-top: -6px;
-        position: relative;
-        border: solid var(--color);
-        border-width: 0 3px 3px 0;
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        transform: rotate(45deg);
-    }
-
-    .chevrondown:nth-child(odd) {
-        animation: pulse54012 500ms ease infinite alternate;
-    }
-
-    .chevrondown:nth-child(even) {
-        animation: pulse54012 500ms ease infinite alternate 250ms;
-    }
-}
-
-@keyframes scrolldown-anim {
-    0% {
-        opacity: 0;
-        height: 6px;
-    }
-
-    40% {
-        opacity: 1;
-        height: 10px;
-    }
-
-    80% {
-        transform: translate(0, 20px);
-        height: 10px;
-        opacity: 0;
-    }
-
-    100% {
-        height: 3px;
-        opacity: 0;
-    }
-}
-
-@keyframes pulse54012 {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 0.5;
-    }
-}
-
 /* From Uiverse.io by cssbuttons-io */
 button {
     position: absolute;
@@ -416,8 +408,8 @@ button {
 
 button.learn-more {
 
-    left: 85%;
-    top: 80%;
+    right: 10px;
+    bottom: 30px;
 
     width: 11rem;
     height: 1.5rem;
@@ -496,4 +488,156 @@ button:hover .circle .icon.arrow {
 button:hover .button-text {
     color: #fff;
     border: none;
+}
+
+@media (max-width: 1000px) {
+    a:hover {
+        color: color-mix(in srgb, #536DFE 10%, #121212 90%);
+    }
+    button {
+        background-color: #f9f9f9;
+    }
+
+    .title-name {
+        font-size: 2.1em;
+    }
+
+    .projet-tag {
+        display: flex;
+        width: 60px;
+        height: 30px;
+        font-size: 1rem;
+        text-align: center;
+        padding: 0;
+        margin: 5px 2px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo-profile {
+        margin-top: 50px;
+    }
+
+    .profile-text-container {
+        margin: 100px 0;
+        height: 200px;
+        width: 100%;
+    }
+
+    .profile-name {
+        width: 100%;
+        text-align: center;
+    }
+
+    .profile-description {
+        width: 100%;
+        text-align: center;
+    }
+
+    #project {
+        visibility: hidden;
+        display: none;
+    }
+
+    .in-row {
+        flex-direction: column;
+    }
+
+    .project-skills {
+        margin-top: 50px;
+        width: 100%;
+    }
+
+    .project-mobile-col {
+        display: flex;
+    }
+
+    .project-objectives {
+        width: 100%;
+    }
+
+    .project-desc {
+        margin: 70px 0;
+    }
+
+    .profile-separator {
+        visibility: hidden;
+        display: none;
+    }
+
+    .card {
+        height: 100vh;
+    }
+
+    button.learn-more {
+        right: 10px;
+        bottom: 30px;
+    }
+
+    .project-image {
+        width: 100%;
+        margin: 0;
+    }
+
+    .chevrons {
+        padding: 6px 0 0 0;
+        margin-left: -3px;
+        margin-top: 48px;
+        width: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .chevrondown {
+        margin-top: -6px;
+        position: relative;
+        border: solid var(--color);
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        transform: rotate(45deg);
+    }
+
+    .chevrondown:nth-child(odd) {
+        animation: pulse54012 500ms ease infinite alternate;
+    }
+
+    .chevrondown:nth-child(even) {
+        animation: pulse54012 500ms ease infinite alternate 250ms;
+    }
+}
+
+@keyframes scrolldown-anim {
+    0% {
+        opacity: 0;
+        height: 6px;
+    }
+
+    40% {
+        opacity: 1;
+        height: 10px;
+    }
+
+    80% {
+        transform: translate(0, 20px);
+        height: 10px;
+        opacity: 0;
+    }
+
+    100% {
+        height: 3px;
+        opacity: 0;
+    }
+}
+
+@keyframes pulse54012 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.5;
+    }
 }

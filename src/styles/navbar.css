@@ -24,7 +24,7 @@
     font-size: 1.6rem !important;
     text-align: center;
 
-    background-color: color-mix(in srgb, #ffffff 30%, #121212 90%);
+    background-color: color-mix(in srgb, #ffffff 30%, #121212 70%);
     border-radius: 10px;
     padding: .2rem 1.9rem;
 }
@@ -44,7 +44,6 @@
 
     margin-top: -8px;
 
-    width: 150px;
     height: 5px;
 }
 
@@ -76,7 +75,7 @@
     position: relative;
     width: 100%;
     height: 65px;
-    background-color:  color-mix(in srgb, #ffffff 15%, #121212 90%);
+    background-color:  color-mix(in srgb, #536DFE 30%, #121212 70%);
     display: flex;
     align-items: center;
     gap: 40px;
@@ -92,10 +91,8 @@
 .navbar .logo {
     display: flex;
     font-size: 4rem ;
-    font-family: SuperMoods, sans-serif;
-    margin-left: 20px;
-    margin-right: 20px;
-    color: black;
+    font-family: "FloridaVibe", sans-serif;
+    color: white;
 }
 
 
@@ -126,7 +123,7 @@
     }
 
     .bar {
-        background-color: #7f8a5e;
+        background-color:  white;
         width: 20px;
         height: 3px;
         display: block;
@@ -158,7 +155,7 @@
         text-align: start;
         width: 100%;
         transition: 0.7s ease-in-out;
-        background-color: #CCD5AE;
+        background-color:  color-mix(in srgb, #536DFE 30%, #121212 70%);
         padding: 10px;
     }
 

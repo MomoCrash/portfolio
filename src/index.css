@@ -6,6 +6,13 @@
 }
 
 @font-face {
+  font-family: "Happy Town";
+  src: local("Happy Town"),
+  url("./fonts/Happy Town.otf") format("opentype");
+  font-weight: normal;
+}
+
+@font-face {
   font-family: "FloridaVibe";
   src: local("FloridaVibe"),
   url("fonts/coolvetica.otf") format("opentype");

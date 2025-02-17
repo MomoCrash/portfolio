@@ -69,6 +69,28 @@ export default function Home() {
             </>);
     }
 
+    function PercentBar(name, first, second, third) {
+        return (<>
+            <p className={"project-objectives"}> {name} </p>
+            <span className={"percent-bar"}>
+                <span className={"percent-bar-progress"} style={{
+                    backgroundColor: "#fff47f",
+                    width: first + "%",
+                    borderRadius: "10px 0px 0px 10px"}}> </span>
+                <span className={"percent-bar-progress"}
+                      style={{
+                          backgroundColor: "lightskyblue",
+                          width: second + "%" }}> </span>
+                <span className={"percent-bar-progress"}
+                      style={{
+                          backgroundColor: "indianred",
+                          width: third + "%",
+                          borderRadius: "0px 10px 10px 0px"}}>
+                </span>
+            </span>
+        </>);
+    }
+
     const {ref, inView, entry} = useInView({
         threshold: 0.9,
     });
@@ -76,16 +98,17 @@ export default function Home() {
     return (
 
         <>
+
             <div>
 
-                <div className={"container full-h"}>
+            <div className={"container full-h"}>
                     <div className={"big-card in-row"}>
                         <div className={"logo-profile"}></div>
                         <div className={"profile-separator"}></div>
                         <div className={"profile-text-container"}>
                             <div className={"font-face-florida profile-name"}> Gilotin Ethan</div>
                             <div className={"profile-description"}> Étudiant en Programmation</div>
-                            <div className={"container in-row"}>
+                            <div className={"container in-row-forced"}>
 
                                 <a href="https://github.com/MomoCrash" target={"_blank"}>
                                     <div className={"profile-social"}
@@ -186,12 +209,11 @@ export default function Home() {
 
                     <div className={"card"}>
 
-                        <div className={"container in-row justify-start"}>
+                        <div className={"container in-row-forced justify-start"}>
                             <h2 className={"font-face-florida title-name"}> Rebreaker</h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "lightcoral"}}> C++ </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "lightsalmon"}}> Game </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "lightpink"}}> School </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "lightcyan"}}> 2 Week </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> C++ </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Game </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> School </h2>
                         </div>
 
                         <div className={"container in-row justify-start"}>
@@ -202,32 +224,36 @@ export default function Home() {
                                     referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
                             </iframe>
                             <p className={"profile-separator"}></p>
-                            <div className={"projet-skills in-row"}>
-                                {SkillPoint("Game Design", 5)}
-                                {SkillPoint("Juiciness", 5)}
-                                {SkillPoint("Game Engine", 4)}
+                            <div className={"project-skills in-row"}>
+                                <div className={"project-mobile-col"}>
+                                    <span className={"project-skills-descriptor"} style={{borderColor: "#fff47f"}}>         2D Game </span>
+                                    <span className={"project-skills-descriptor"} style={{borderColor: "lightskyblue"}}>    Game Engine </span>
+                                    <span className={"project-skills-descriptor"}
+                                          style={{borderColor: "indianred"}}>       Juiciness </span>
+                                </div>
+                                {PercentBar("work distribution", 30, 30, 40)}
                             </div>
                             <p className={"profile-separator"}></p>
-                            <p className={"project-desc"}> Petites descriptions de la finalité du projet et de
-                                l'apprentissage </p>
+                            <p className={"project-desc"}> ReBreaker, est une réplique d'un Casse-Brique dans une
+                                version surbooster, avec un maximum d'effets visuels, de feedbacks, et d </p>
 
-                            <button className="learn-more">
+                        </div>
+
+                        <button className="learn-more">
                                     <span className="circle" aria-hidden="true">
                                       <span className="icon arrow"></span></span>
-                                <span className="font-face-florida button-text">Learn More</span>
-                            </button>
-                        </div>
+                            <span className="font-face-florida button-text">Learn More</span>
+                        </button>
 
                     </div>
 
                     <div className={"card"}>
 
-                        <div className={"container in-row justify-start"}>
+                        <div className={"container in-row-forced justify-start"}>
                             <h2 className={"font-face-florida title-name"}> Multiplayer </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "lightcoral"}}> C++ </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "lightsalmon"}}> Networking </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "lightpink"}}> School </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "lightcyan"}}> 2 Week </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> C++ </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Network </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> School </h2>
                         </div>
 
                         <div className={"container in-row justify-start"}>
@@ -238,10 +264,19 @@ export default function Home() {
                                     referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
                             </iframe>
                             <p className={"profile-separator"}></p>
-                            <div className={"projet-skills in-row"}>
-                                {SkillPoint("Encapsulation", 5)}
-                                {SkillPoint("API Usage", 5)}
-                                {SkillPoint("Client–Server", 4)}
+                            <div className={"project-skills in-row"}>
+                                {/*                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "lightsalmon"}}> Encapsulation </span>
+                                <span className={"project-skills-descriptor"} style={{borderColor: "lightskyblue"}}> API Usage </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "lightgreen"}}> Client–Server </span>
+                                {PercentBar("Repartition", 40, 40, 60)}*/}
+                                <span className={"project-skills-descriptor"} style={{borderColor: "#fff47f"}}>     API Usage </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "lightskyblue"}}>Encapsulation </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "indianred"}}>   Client–Server </span>
+                                {PercentBar("work distribution", 40, 20, 40)}
                             </div>
                             <p className={"profile-separator"}></p>
                             <p className={"project-desc"}>Petites descriptions de la finalité du projet et de
@@ -258,12 +293,11 @@ export default function Home() {
 
                     <div className={"card"}>
 
-                        <div className={"container in-row justify-start"}>
-                            <h2 className={"font-face-florida title-name"}> Endless Terrain Generator</h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "lightcoral"}}> Unity </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "lightsalmon"}}> Project </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "lightpink"}}> Personal </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "lightcyan"}}> 1 Week </h2>
+                        <div className={"container in-row-forced justify-start"}>
+                            <h2 className={"font-face-florida title-name"}> Endless Terrain </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> Unity </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Project </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> Personal </h2>
                         </div>
 
                         <div className={"container in-row justify-start"}>
@@ -274,31 +308,34 @@ export default function Home() {
                                     referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
                             </iframe>
                             <p className={"profile-separator"}></p>
-                            <div className={"projet-skills in-row"}>
-                                {SkillPoint("Geometry", 5)}
-                                {SkillPoint("Maths", 5)}
-                                {SkillPoint("Optimisation", 3)}
+                            <div className={"project-skills in-row"}>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "#fff47f"}}>     Geometry </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "lightskyblue"}}>Maths </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "indianred"}}>   Optimisation </span>
+                                {PercentBar("work distribution", 35, 35, 30)}
                             </div>
                             <p className={"profile-separator"}></p>
                             <p className={"project-desc"}>qsd</p>
 
-                            <button className="learn-more">
-                                    <span className="circle" aria-hidden="true">
-                                      <span className="icon arrow"></span></span>
-                                <span className="font-face-florida button-text">Learn More</span>
-                            </button>
                         </div>
 
+                        <button className="learn-more">
+                                    <span className="circle" aria-hidden="true">
+                                      <span className="icon arrow"></span></span>
+                            <span className="font-face-florida button-text">Learn More</span>
+                        </button>
                     </div>
 
                     <div className={"card"}>
 
-                        <div className={"container in-row justify-start"}>
+                        <div className={"container in-row-forced justify-start"}>
                             <h2 className={"font-face-florida title-name"}> Nichii </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "lightcoral"}}> Unity </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "lightsalmon"}}> Game </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "lightpink"}}> Personal </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "lightcyan"}}> Long Term </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> Unity </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Game </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}>Personal </h2>
                         </div>
 
                         <div className={"container in-row justify-start"}>
@@ -306,21 +343,70 @@ export default function Home() {
                                 <span className={"no-image"}> NO SIGNAL </span>
                             </span>
                             <p className={"profile-separator"}></p>
-                            <div className={"projet-skills in-row"}>
-                                {SkillPoint("Mobile Dev", 4)}
-                                {SkillPoint("Game Dev", 5)}
-                                {SkillPoint("Originality", 3)}
+                            <div className={"project-skills in-row"}>
+                                {/*                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "lightsalmon"}}> Mobile </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "lightskyblue"}}> Programming </span>
+                                <span className={"project-skills-descriptor"} style={{borderColor: "lightgreen"}}> Game Design </span>*/}
+                                <span className={"project-skills-descriptor"} style={{borderColor: "#fff47f"}}>     Mobile Dev. </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "lightskyblue"}}>Programming </span>
+                                <span className={"project-skills-descriptor"} style={{borderColor: "indianred"}}>   Game Design </span>
+                                {PercentBar("work distribution", 40, 35, 25)}
                             </div>
                             <p className={"profile-separator"}></p>
                             <p className={"project-desc"}>Petites descriptions de la finalité du projet et de
                                 l'apprentissage</p>
 
-                            <button className="learn-more">
+                        </div>
+
+                        <button className="learn-more">
                                     <span className="circle" aria-hidden="true">
                                       <span className="icon arrow"></span></span>
-                                <span className="font-face-florida button-text">Learn More</span>
-                            </button>
+                            <span className="font-face-florida button-text">Learn More</span>
+                        </button>
+
+                    </div>
+
+                    <div className={"card"}>
+
+                        <div className={"container in-row-forced justify-start"}>
+                            <h2 className={"font-face-florida title-name"}> Adventure Horizon </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> Unity </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Personal </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> Game </h2>
                         </div>
+
+                        <div className={"container in-row justify-start"}>
+                            <span ref={ref} className={"project-image"}>
+                                <span className={"no-image"}> NO SIGNAL </span>
+                            </span>
+                            <p className={"profile-separator"}></p>
+                            <div className={"project-skills in-row"}>
+                                {/*                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "lightsalmon"}}> Mobile </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "lightskyblue"}}> Programming </span>
+                                <span className={"project-skills-descriptor"} style={{borderColor: "lightgreen"}}> Game Design </span>*/}
+
+                                <span className={"project-skills-descriptor"} style={{borderColor: "#fff47f"}}>     Team Work </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "lightskyblue"}}>Gameplay </span>
+                                <span className={"project-skills-descriptor"} style={{borderColor: "indianred"}}>   Game Design </span>
+                                {PercentBar("work distribution", 40, 35, 25)}
+                            </div>
+                            <p className={"profile-separator"}></p>
+                            <p className={"project-desc"}>Petites descriptions de la finalité du projet et de
+                                l'apprentissage</p>
+
+                        </div>
+
+                        <button className="learn-more">
+                                    <span className="circle" aria-hidden="true">
+                                      <span className="icon arrow"></span></span>
+                            <span className="font-face-florida button-text">Learn More</span>
+                        </button>
 
                     </div>
 
