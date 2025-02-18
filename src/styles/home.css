@@ -239,6 +239,16 @@
     justify-content: center;
 }
 
+.image-website {
+    background-image: url("../../public/website.png");
+    background-size: 100%;
+}
+
+.image-beacon {
+    background-image: url("../../public/beacon.png");
+    background-size: 100%;
+}
+
 .projet-tag {
     font-family: CaviarDreams;
     color: black;

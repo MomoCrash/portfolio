@@ -21,7 +21,7 @@ export default function Home() {
 
     const projectDescription = [
         <>
-            <div className={"project-desc"}>
+            <div className={"project-desc-big"}>
                 Adventure's Horizon est un jeu Die & Retry, vous avez pour mission de progresser dans une montagne pleine de danger
                 vous avez pour objectif de tuer les monstres de la montagne, mourrir pour acheter plus d'équipements et allez plus loin dans la montagne.
             </div>
@@ -135,48 +135,6 @@ export default function Home() {
                     </a>
 
                     {
-                        /*</div>
-                    <div className={"container"}>
-
-                    <div className={"big-card"}>
-
-                        <h2 className={"font-face-florida sub-name"}> Bienvenue dans mon jeune parcours aberrant ! </h2>
-                        <p className={"project-desc small-text"}>
-                            Tout d'abors merci d'être interessé.e par mes oeuvre, mon travail ou mon profil.
-                        </p>
-                        <p className={"project-desc"}>
-                            Passionné par le développement depuis mes 14 ans, toujours à la recherche d'innovations et
-                            de nouveaux languages,
-                        </p>
-                        <p className={"project-desc"}>
-                            Particulièrement dans le jeu vidéo avec plusieurs projet sur Unity en C#, des projet de
-                            cours en C/C++, et récement des projets sur Unreal Engine sur le quel je me forme en
-                            parrallèle des études.
-                        </p>
-
-
-                    </div>
-
-                </div>
-
-
-                <div className={"container"}>
-
-                    <div className={"big-card"}>
-
-                        <h2 className={"font-face-florida title-name"}> unity & C# </h2>
-                        <p className={"project-desc"}>
-                            Ut vestibulum viverra felis ut faucibus. Phasellus nec facilisis justo. Duis elementum urna
-                            nec consectetur efficitur. Praesent condimentum tellus at ante porta semper. Nullam lacinia
-                            malesuada ornare. Nulla dapibus tempor odio. Ut dictum est est, at suscipit neque mattis ut.
-                            Proin fringilla scelerisque ex, non efficitur justo interdum ut. Ut metus mi, vulputate ac
-                            dui ac, dapibus tincidunt metus. Sed lectus odio, placerat vitae ex quis, elementum
-                            convallis lacus. Nunc ut nunc accumsan, tincidunt risus nec, aliquam lorem. Nunc in suscipit
-                            est. Vestibulum turpis leo, scelerisque eget ligula in, rhoncus vulputate lectus. Aliquam
-                            viverra est sed semper iaculis. Sed vehicula quam a auctor lacinia. Mauris mattis dictum
-                            feugiat.
-                        </p>
-                    </div>*/
                 }
 
                 </div>
@@ -192,7 +150,7 @@ export default function Home() {
                         </Unity>
 
                         <div className={"inline-container"}>
-                            <button className="previous" onClick={PreviousGame}> Précédent</button>
+                            <button className="previous" onClick={PreviousGame}> Précédent </button>
                             <p className="font-face-florida"> just play it now </p>
                             <button className="next" onClick={NextGame}> Suivant</button>
                             <button className="fullscreen" onClick={Fullscreen}></button>
@@ -231,15 +189,230 @@ export default function Home() {
                                 {PercentBar("work distribution", 30, 30, 40)}
                             </div>
                             <p className={"profile-separator"}></p>
-                            <p className={"project-desc"}> ReBreaker, est une réplique d'un Casse-Brique dans une
-                                version surbooster, avec un maximum d'effets visuels, de feedbacks, et d </p>
+                            <p className={"project-desc"}>
+                                ReBreaker, est une réplique d'un Casse-Brique dans une version surbooster,
+                                avec pour objectif un maximum de feedbacks visuels, d'animation d'explosion et de
+                                dynamisme !!
+                            </p>
 
                         </div>
 
                         <button className="learn-more">
                                     <span className="circle" aria-hidden="true">
                                       <span className="icon arrow"></span></span>
-                            <span className="font-face-florida button-text">Learn More</span>
+                            <span className="font-face-florida button-text"> En savoir plus </span>
+                        </button>
+
+                    </div>
+
+                    <div className={"card"}>
+
+                        <div className={"container in-row-forced justify-start"}>
+                            <h2 className={"font-face-florida title-name"}> Adventure's Horizon </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> Unity </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> School </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> Game </h2>
+                        </div>
+
+                        <div className={"container in-row justify-start"}>
+                            <span ref={ref}>
+                                <iframe className={"project-image"}
+                                        src="https://www.youtube.com/embed/EY8LksY78I8?si=HeFElT-CKeUNPwNY?&autoplay=1&mute=1&loop=1"
+                                        title="YouTube video player" frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                            </span>
+                            <p className={"profile-separator"}></p>
+                            <div className={"project-skills in-row"}>
+
+                                <span className={"project-skills-descriptor"} style={{borderColor: "#fff47f"}}>     Team Work </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "lightskyblue"}}>Gameplay </span>
+                                <span className={"project-skills-descriptor"} style={{borderColor: "indianred"}}>   Game Design </span>
+                                {PercentBar("work distribution", 40, 35, 25)}
+                            </div>
+                            <p className={"profile-separator"}></p>
+                            <p className={"project-desc"}>
+                                Adventure's Horizon, est un jeu Die & Retry ou vous <br/>
+                                -foncez tête baissé dans les ennemies...
+                                -mourrez... -passez chez le marchand... -et vous vous vengez plus fort que jamais !!
+                            </p>
+
+                        </div>
+
+                        <button className="learn-more">
+                                    <span className="circle" aria-hidden="true">
+                                      <span className="icon arrow"></span></span>
+                            <span className="font-face-florida button-text"> En savoir plus </span>
+                        </button>
+
+                    </div>
+
+                    <div className={"card"}>
+
+                        <div className={"container in-row-forced justify-start"}>
+                            <h2 className={"font-face-florida title-name"}> Endless Terrain </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> Unity </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Project </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> Personal </h2>
+                        </div>
+
+                        <div className={"container in-row justify-start"}>
+                            <iframe ref={ref} className={"project-image"}
+                                    src="https://www.youtube.com/embed/7ZslUnYMS2E?si=dv7hXxQDChQ8zmGi?&autoplay=1&mute=1&loop=1"
+                                    title="YouTube video player" frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
+                            </iframe>
+                            <p className={"profile-separator"}></p>
+                            <div className={"project-skills in-row"}>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "#fff47f"}}>     Geometry </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "lightskyblue"}}>Maths </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "indianred"}}>   Optimisation </span>
+                                {PercentBar("work distribution", 35, 35, 30)}
+                            </div>
+                            <p className={"profile-separator"}></p>
+                            <p className={"project-desc"}>
+                                Ce projet de génération procédurale de terrain infini, permet la génération
+                                rapide de mesh de terrain en fonction d'une Height Map.
+                                Le tout étant ultra modulable et configurable.
+
+                            </p>
+
+                        </div>
+
+                        <button className="learn-more">
+                                    <span className="circle" aria-hidden="true">
+                                      <span className="icon arrow"></span></span>
+                            <span className="font-face-florida button-text"> En savoir plus </span>
+                        </button>
+                    </div>
+
+                    <div className={"card"}>
+
+                        <div className={"container in-row-forced justify-start"}>
+                            <h2 className={"font-face-florida title-name"}> Nichii </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> Unity </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Game </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}>Personal </h2>
+                        </div>
+
+                        <div className={"container in-row justify-start"}>
+                            <iframe className={"project-image"}
+                                    src="https://www.youtube.com/embed/X10c4__0K7k?si=sL_xF1zCWQ-9GYj2?&autoplay=1&mute=1&loop=1"
+                                    title="YouTube video player" frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                            <p className={"profile-separator"}></p>
+                            <div className={"project-skills in-row"}>
+
+                                <span className={"project-skills-descriptor"} style={{borderColor: "#fff47f"}}>     Mobile Dev. </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "lightskyblue"}}>Programming </span>
+                                <span className={"project-skills-descriptor"} style={{borderColor: "indianred"}}>   Game Design </span>
+                                {PercentBar("work distribution", 40, 35, 25)}
+                            </div>
+                            <p className={"profile-separator"}></p>
+                            <p className={"project-desc"}>
+                                Nichii est un projet de coeur, ce jeu Idle mobile vous permet de construire votre ville.
+                                Avec une phase de gameplay prenante où vous explorez librement le monde, puis retourez
+                                construire votre ville qui produira encore plus et même quand vous n'êtes plus sur le
+                                jeu.
+                            </p>
+
+                        </div>
+
+                        <button className="learn-more">
+                                    <span className="circle" aria-hidden="true">
+                                      <span className="icon arrow"></span></span>
+                            <span className="font-face-florida button-text"> En savoir plus </span>
+                        </button>
+
+                    </div>
+
+                    <div className={"card"}>
+
+                        <div className={"container in-row-forced justify-start"}>
+                            <h2 className={"font-face-florida title-name"}> Beacon </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> ReactJS </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> In team </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> Website </h2>
+                        </div>
+
+                        <div className={"container in-row justify-start"}>
+                            <a href={"https://momocrash.github.io/Beacon/"} target={"_blank"}
+                               className={"project-image image-beacon"}>
+                            </a>
+                            <p className={"profile-separator"}></p>
+                            <div className={"project-skills in-row"}>
+
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "#fff47f"}}>     Backend   </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "lightskyblue"}}> Database </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "indianred"}}>   Riot API </span>
+                                {PercentBar("répartition travail", 40, 30, 30)}
+                            </div>
+                            <p className={"profile-separator"}></p>
+                            <p className={"project-desc"}>
+                                Beacon est un projet ambitieux de recherche, d'analyse et de suivis de joueur sur le
+                                jeux League Of Legends. La plateforme à pour objectif de faire une analyse d'un joueur
+                                et de lui recommander des méthodes de jeu globales et personnalisé.
+                            </p>
+
+                        </div>
+
+                        <button className="learn-more">
+                                    <span className="circle" aria-hidden="true">
+                                      <span className="icon arrow"></span></span>
+                            <span className="font-face-florida button-text"> En savoir plus </span>
+                        </button>
+
+                    </div>
+
+                    <div className={"card"}>
+
+                        <div className={"container in-row-forced justify-start"}>
+                            <h2 className={"font-face-florida title-name"}> Template Restaurant </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> ReactJS </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Personal </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> Website </h2>
+                        </div>
+
+                        <div className={"container in-row justify-start"}>
+                            <a href={"https://momocrash.github.io/website-loiezhaut/"}
+                               target={"_blank"}
+                               className={"project-image image-website"}>
+                            </a>
+                            <p className={"profile-separator"}></p>
+                            <div className={"project-skills in-row"}>
+
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "#fff47f"}}>     Design </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "lightskyblue"}}> UI/UX </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "indianred"}}>   Fonctionnalités </span>
+                                {PercentBar("répartition travail", 40, 30, 30)}
+                            </div>
+                            <p className={"profile-separator"}></p>
+                            <p className={"project-desc"}>
+                                Le site web L'oie'Z'haut est un modèle dans lequelle j'ai
+                                cherché à faire un UI et un design efficace pour un restaurant.
+                                En mettant en avant des fonctionnalité simple d'utilisation sur mobile et ordinateur
+                                pour une navigation simple.
+                            </p>
+
+                        </div>
+
+                        <button className="learn-more">
+                                    <span className="circle" aria-hidden="true">
+                                      <span className="icon arrow"></span></span>
+                            <span className="font-face-florida button-text"> En savoir plus </span>
                         </button>
 
                     </div>
@@ -262,12 +435,6 @@ export default function Home() {
                             </iframe>
                             <p className={"profile-separator"}></p>
                             <div className={"project-skills in-row"}>
-                                {/*                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "lightsalmon"}}> Encapsulation </span>
-                                <span className={"project-skills-descriptor"} style={{borderColor: "lightskyblue"}}> API Usage </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "lightgreen"}}> Client–Server </span>
-                                {PercentBar("Repartition", 40, 40, 60)}*/}
                                 <span className={"project-skills-descriptor"} style={{borderColor: "#fff47f"}}>     API Usage </span>
                                 <span className={"project-skills-descriptor"}
                                       style={{borderColor: "lightskyblue"}}>Encapsulation </span>
@@ -276,128 +443,20 @@ export default function Home() {
                                 {PercentBar("work distribution", 40, 20, 40)}
                             </div>
                             <p className={"profile-separator"}></p>
-                            <p className={"project-desc"}>Petites descriptions de la finalité du projet et de
-                                l'apprentissage </p>
+                            <p className={"project-desc"}>
+                                Plus un projet qu'un réel jeu, il consiste en la syncronisation de plusieurs clients
+                                à un serveur distant ou local via un protocol UDP, en utilisant une API bas niveau
+                                réseau.
+                                <br/>
+                                Je vous recommande de consulter la page Github
+
+                            </p>
                         </div>
 
                         <button className="learn-more">
                                     <span className="circle" aria-hidden="true">
                                       <span className="icon arrow"></span></span>
-                            <span className="font-face-florida button-text">Learn More</span>
-                        </button>
-
-                    </div>
-
-                    <div className={"card"}>
-
-                        <div className={"container in-row-forced justify-start"}>
-                            <h2 className={"font-face-florida title-name"}> Endless Terrain </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> Unity </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Project </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> Personal </h2>
-                        </div>
-
-                        <div className={"container in-row justify-start"}>
-                            <iframe ref={ref} className={"project-image"} width="560" height="315"
-                                    src="https://www.youtube.com/embed/7ZslUnYMS2E?si=dv7hXxQDChQ8zmGi?&autoplay=1&mute=1&loop=1"
-                                    title="YouTube video player" frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
-                            </iframe>
-                            <p className={"profile-separator"}></p>
-                            <div className={"project-skills in-row"}>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "#fff47f"}}>     Geometry </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "lightskyblue"}}>Maths </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "indianred"}}>   Optimisation </span>
-                                {PercentBar("work distribution", 35, 35, 30)}
-                            </div>
-                            <p className={"profile-separator"}></p>
-                            <p className={"project-desc"}>qsd</p>
-
-                        </div>
-
-                        <button className="learn-more">
-                                    <span className="circle" aria-hidden="true">
-                                      <span className="icon arrow"></span></span>
-                            <span className="font-face-florida button-text">Learn More</span>
-                        </button>
-                    </div>
-
-                    <div className={"card"}>
-
-                        <div className={"container in-row-forced justify-start"}>
-                            <h2 className={"font-face-florida title-name"}> Nichii </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> Unity </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Game </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}>Personal </h2>
-                        </div>
-
-                        <div className={"container in-row justify-start"}>
-                            <span ref={ref} className={"project-image"}>
-                                <span className={"no-image"}> NO SIGNAL </span>
-                            </span>
-                            <p className={"profile-separator"}></p>
-                            <div className={"project-skills in-row"}>
-                                {/*                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "lightsalmon"}}> Mobile </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "lightskyblue"}}> Programming </span>
-                                <span className={"project-skills-descriptor"} style={{borderColor: "lightgreen"}}> Game Design </span>*/}
-                                <span className={"project-skills-descriptor"} style={{borderColor: "#fff47f"}}>     Mobile Dev. </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "lightskyblue"}}>Programming </span>
-                                <span className={"project-skills-descriptor"} style={{borderColor: "indianred"}}>   Game Design </span>
-                                {PercentBar("work distribution", 40, 35, 25)}
-                            </div>
-                            <p className={"profile-separator"}></p>
-                            <p className={"project-desc"}>Petites descriptions de la finalité du projet et de
-                                l'apprentissage</p>
-
-                        </div>
-
-                        <button className="learn-more">
-                                    <span className="circle" aria-hidden="true">
-                                      <span className="icon arrow"></span></span>
-                            <span className="font-face-florida button-text">Learn More</span>
-                        </button>
-
-                    </div>
-
-                    <div className={"card"}>
-
-                        <div className={"container in-row-forced justify-start"}>
-                            <h2 className={"font-face-florida title-name"}> Adventure Horizon </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> Unity </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Personal </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> Game </h2>
-                        </div>
-
-                        <div className={"container in-row justify-start"}>
-                            <span ref={ref} className={"project-image"}>
-                                <span className={"no-image"}> NO SIGNAL </span>
-                            </span>
-                            <p className={"profile-separator"}></p>
-                            <div className={"project-skills in-row"}>
-
-                                <span className={"project-skills-descriptor"} style={{borderColor: "#fff47f"}}>     Team Work </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "lightskyblue"}}>Gameplay </span>
-                                <span className={"project-skills-descriptor"} style={{borderColor: "indianred"}}>   Game Design </span>
-                                {PercentBar("work distribution", 40, 35, 25)}
-                            </div>
-                            <p className={"profile-separator"}></p>
-                            <p className={"project-desc"}>Petites descriptions de la finalité du projet et de
-                                l'apprentissage</p>
-
-                        </div>
-
-                        <button className="learn-more">
-                                    <span className="circle" aria-hidden="true">
-                                      <span className="icon arrow"></span></span>
-                            <span className="font-face-florida button-text">Learn More</span>
+                            <span className="font-face-florida button-text"> En savoir plus </span>
                         </button>
 
                     </div>
