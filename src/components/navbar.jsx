@@ -2,15 +2,14 @@ import {useEffect, useState} from 'react'
 import "../styles/navbar.css"
 import {getWindowDimensions, hasWindow} from "../main.jsx";
 import {Link} from "react-router-dom";
+import {IsHome} from "../App.jsx";
 
 function Navbar() {
-    // adding the states
+
     const [isActive, setIsActive] = useState(false);
-    //add the active class
     const toggleActiveClass = () => {
         setIsActive(!isActive);
     };
-    //clean up function to remove the active class
     const removeActive = () => {
         setIsActive(false)
     }
@@ -31,22 +30,19 @@ function Navbar() {
     return (
 
         <nav className={"navbar"}>
-            {windowDimensions.width < 1050 ? <Link to='/website-loiezhaut/' className={"logo"}> Mon portefolio </Link> : ""}
+            {windowDimensions.width < 1050 ? <Link to='/' className={"logo"}> Mon portfolio </Link> : ""}
             <ul className={isActive ? "navMenu active" : 'navMenu'}>
                 <li onClick={removeActive}>
-                    <Link to="/" className="navLink"> Mon profile <span className={"pprogress-bar"}> <span
-                        className={"pprogress-bar-percent"}></span> </span> </Link>
+                    <a href={"/#"} className="navLink"> Mes liens <span className={"pprogress-bar"}> <span
+                        className={"pprogress-bar-percent"}></span> </span> </a>
                 </li>
                 <li onClick={removeActive}>
-                    <Link to={{
-                        pathname: "/",
-                        hash: "#projects"
-                    }}  className="navLink"> Mes projets <span className={"pprogress-bar"}> <span
-                        className={"pprogress-bar-percent"}></span> </span> </Link>
+                    <a href={IsHome() ? "#projects" : "/"} className="navLink"> Mes projets <span className={"pprogress-bar"}> <span
+                        className={"pprogress-bar-percent"}></span> </span> </a>
                 </li>
                 <li onClick={removeActive}>
-                    <Link to="/contact" className="navLink"> Me contacter <span className={"pprogress-bar"}> <span
-                        className={"pprogress-bar-percent"}></span> </span></Link>
+                    <a href={IsHome() ? "#contact" : "/"} className="navLink"> Me contacter <span className={"pprogress-bar"}> <span
+                        className={"pprogress-bar-percent"}></span> </span></a>
                 </li>
             </ul>
             <div className={isActive ? "hamburger active" : 'hamburger'} onClick={toggleActiveClass}>

@@ -1,23 +1,25 @@
 import "../styles/home.css"
 import { Unity, useUnityContext  } from "react-unity-webgl"
+import React, {useEffect, useState} from "react";
 import { useInView } from "react-intersection-observer";
 
 export default function Home() {
 
-    const unityProviders = [
-        useUnityContext({
-            loaderUrl: "horizon/horizon.loader.js",
-            dataUrl: "horizon/horizon.data.br",
-            frameworkUrl: "horizon/horizon.js.br",
-            codeUrl: "horizon/horizon.wasm.br"
-        }),
-        useUnityContext({
-            loaderUrl: "nichii/WebNichii.loader.js",
-            dataUrl: "nichii/WebNichii.data.br",
-            frameworkUrl: "nichii/WebNichii.framework.js.br",
-            codeUrl: "nichii/WebNichii.wasm.br"
-        })
-    ]
+    const useCheckMobileScreen = () => {
+        const [width, setWidth] = useState(window.innerWidth);
+        const handleWindowSizeChange = () => {
+            setWidth(window.innerWidth);
+        }
+
+        useEffect(() => {
+            window.addEventListener('resize', handleWindowSizeChange);
+            return () => {
+                window.removeEventListener('resize', handleWindowSizeChange);
+            }
+        }, []);
+
+        return (width <= 768);
+    }
 
     const projectDescription = [
         <>
@@ -35,31 +37,78 @@ export default function Home() {
         </>
     ]
 
-    function PreviousGame() {
-        let currentGame = parseInt(localStorage.getItem("currentGame")) || 1;
-        currentGame = (currentGame-1)%unityProviders.length
-        localStorage.setItem("currentGame", currentGame.toString())
-        window.location.reload()
+    function LoadUnityPlayer() {
+
+        if (!useCheckMobileScreen()) {
+
+            const unityProviders = [
+                useUnityContext({
+                    loaderUrl: "horizon/horizon.loader.js",
+                    dataUrl: "horizon/horizon.data.br",
+                    frameworkUrl: "horizon/horizon.js.br",
+                    codeUrl: "horizon/horizon.wasm.br"
+                })]
+
+            if (localStorage.getItem("currentGame") >= unityProviders.length) {
+                localStorage.setItem("currentGame", "0")
+            }
+
+
+            function PreviousGame() {
+                let currentGame = parseInt(localStorage.getItem("currentGame")) || 1;
+                currentGame = (currentGame - 1) % unityProviders.length
+                localStorage.setItem("currentGame", currentGame.toString())
+                window.location.reload()
+            }
+
+            function NextGame() {
+                let currentGame = parseInt(localStorage.getItem("currentGame")) || 0;
+                currentGame = (currentGame + 1) % unityProviders.length
+                localStorage.setItem("currentGame", currentGame.toString())
+                window.location.reload()
+            }
+
+            function Fullscreen() {
+                unityProviders[localStorage.getItem("currentGame") ? parseInt(localStorage.getItem("currentGame")) : 0].requestFullscreen(true);
+            }
+
+            return (<>
+                <div id={"project"} className={"container"}>
+
+                    <div className={"game-preview-card"}>
+
+                        <h2 className={"font-face-florida title-name"}> mes jeux </h2>
+                        {projectDescription[localStorage.getItem("currentGame") ? parseInt(localStorage.getItem("currentGame")) : 0]}
+                        <Unity className={"game-preview"}
+                               unityProvider={unityProviders[localStorage.getItem("currentGame") ? parseInt(localStorage.getItem("currentGame")) : 0].unityProvider}>
+                        </Unity>
+
+                        <div className={"inline-container"}>
+                            <button className="previous" onClick={PreviousGame}> Précédent</button>
+                            <p className="font-face-florida"> just play it now </p>
+                            <button className="next" onClick={NextGame}> Suivant</button>
+                            <button className="fullscreen" onClick={Fullscreen}></button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </>)
+
+        }
+
+        return (<></>)
+
     }
 
-    function NextGame() {
-        let currentGame = parseInt(localStorage.getItem("currentGame")) || 0;
-        currentGame = (currentGame+1)%unityProviders.length
-        localStorage.setItem("currentGame", currentGame.toString())
-        window.location.reload()
-    }
-
-    function Fullscreen() {
-        unityProviders[localStorage.getItem("currentGame") ? parseInt(localStorage.getItem("currentGame")) : 0].requestFullscreen(true);
-    }
 
     function SkillPoint(string, number) {
         return (<>
-                <p className={"project-objectives"}> {string} </p>
-                <ul className={"container in-row"}>
-                    {[...Array(number)].map((x, i) =>
-                        <li key={i} className={"project-bullet"}></li>
-                    )}
+            <p className={"project-objectives"}> {string} </p>
+            <ul className={"container in-row"}>
+                {[...Array(number)].map((x, i) =>
+                    <li key={i} className={"project-bullet"}></li>
+                )}
                     {[...Array(5-number)].map((x, i) =>
                         <li key={i} className={"project-bullet"}>
                             <span className={"project-bullet plain"}></span>
@@ -125,7 +174,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <a href="#project">
+                    <a href="#projets">
                         <div className={"scrolldown"}>
                             <div className={"chevrons"}>
                                 <div className={"chevrondown"}></div>
@@ -139,26 +188,24 @@ export default function Home() {
 
                 </div>
 
-                <div id={"project"} className={"container"}>
+                <div className={"container in-column"}>
 
-                    <div className={"game-preview-card"}>
+                    <div id={"contact"} className={"card mobile-xs"}>
 
-                        <h2 className={"font-face-florida title-name"}> mes jeux </h2>
-                        {projectDescription[localStorage.getItem("currentGame") ? parseInt(localStorage.getItem("currentGame")) : 0]}
-                        <Unity className={"game-preview"}
-                               unityProvider={unityProviders[localStorage.getItem("currentGame") ? parseInt(localStorage.getItem("currentGame")) : 0].unityProvider}>
-                        </Unity>
-
-                        <div className={"inline-container"}>
-                            <button className="previous" onClick={PreviousGame}> Précédent </button>
-                            <p className="font-face-florida"> just play it now </p>
-                            <button className="next" onClick={NextGame}> Suivant</button>
-                            <button className="fullscreen" onClick={Fullscreen}></button>
+                        <div className={"container in-row justify-start"}>
+                            <p className={"project-desc"} style={{maxWidth: "100%", fontSize: "1.5rem"}}>
+                                Mes projets vous intéresses ? Vous voulez discuter ?
+                                Ou me faire une offre d'emploi : envoyez moi un mail !
+                                <br/> <a href={"mailto:ethan.gilotin@gmail.com"}> ethan.gilotin@gmail.com </a>
+                            </p>
                         </div>
-
                     </div>
 
                 </div>
+
+                {
+                    LoadUnityPlayer()
+                }
 
                 <div id={"projects"} className={"container in-column"}>
 

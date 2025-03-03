@@ -547,8 +547,10 @@ button:hover .button-text {
 
     .logo-profile {
         margin-top: 50px;
-        width: 200px;
-        height: 200px;
+        min-height: 200px;
+        min-width: 200px;
+        max-width: 200px;
+        max-height: 200px;
         background-position: center -150px;
     }
 
@@ -601,7 +603,7 @@ button:hover .button-text {
     }
 
     .card {
-        height: calc(70vh + 60vw);
+        height: calc(80vh + 70vw);
     }
 
 
@@ -642,6 +644,10 @@ button:hover .button-text {
 
     .chevrondown:nth-child(even) {
         animation: pulse54012 500ms ease infinite alternate 250ms;
+    }
+
+    .mobile-xs {
+        height: 100%;
     }
 }
 

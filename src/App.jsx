@@ -1,8 +1,16 @@
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import {Routes, Route, BrowserRouter, useLocation} from 'react-router-dom';
 import './App.css'
 import Home from "./pages/Home.jsx";
 import Layout from "./pages/Layout.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import Credits from "./pages/credits.jsx";
+
+let location;
+
+export function IsHome() {
+    location = useLocation();
+    return (location.pathname === "/")
+}
 
 function App() {
 
@@ -13,6 +21,7 @@ function App() {
               <Routes>
                   <Route path="/" element={<Layout/>}>
                       <Route index element={<Home />} />
+                      <Route path={"/credits"} element={<Credits />} />
                       <Route path={"/*"} element={<NotFound />} />
                   </Route>
               </Routes>
