@@ -206,16 +206,59 @@ export default function Home() {
                 {
                     LoadUnityPlayer()
                 }
-
+                
                 <div id={"projects"} className={"container in-column"}>
+
+                    <div className={"card"}>
+
+                        <div className={"container in-row-forced justify-start"}>
+                            <h2 className={"font-face-florida title-name"}> Projet MIRD </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> C++ </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Cours </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> Projet </h2>
+                        </div>
+
+                        <div className={"container in-row justify-start"}>
+                            <iframe ref={ref} className={"project-image"}
+                                    src="https://www.youtube.com/embed/QEAM5Ok1Sfg?si=P4eF4k2Xae7HeSQv?&autoplay=1&mute=1&loop=1"
+                                    title="YouTube video player" frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
+                            </iframe>
+                            <p className={"profile-separator"}></p>
+                            <div className={"project-skills in-row"}>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "#fff47f"}}>     DirectX12 </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "lightskyblue"}}>Architecture </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "indianred"}}>   Optimisation </span>
+                                {PercentBar("work distribution", 50, 25, 25)}
+                            </div>
+                            <p className={"profile-separator"}></p>
+                            <p className={"project-desc"}>
+                                MIRD est un projet ambitieux de moteur de jeu sindé en deux pôles :
+                                une partie rendu 3D fait en utilisant DirectX12. Ainsi qu'une partie
+                                moteur avec un systeme ECS et gestion de scripts (similaire à Unity)
+                            </p>
+
+                        </div>
+                        <a target={"_blank"} href={"https://github.com/MomoCrash/MIRD"}>
+                            <button className="learn-more">
+                                    <span className="circle" aria-hidden="true">
+                                      <span className="icon arrow"></span></span>
+                                <span className="font-face-florida button-text"> En savoir plus </span>
+                            </button>
+                        </a>
+                    </div>
 
                     <div className={"card"}>
 
                         <div className={"container in-row-forced justify-start"}>
                             <h2 className={"font-face-florida title-name"}> Rebreaker</h2>
                             <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> C++ </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Game </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> School </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Cours </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> Jeu </h2>
                         </div>
 
                         <div className={"container in-row justify-start"}>
@@ -244,11 +287,13 @@ export default function Home() {
 
                         </div>
 
-                        <button className="learn-more">
+                        <a target={"_blank"} href={"https://github.com/MomoCrash/ReBreaker"}>
+                            <button className="learn-more">
                                     <span className="circle" aria-hidden="true">
                                       <span className="icon arrow"></span></span>
-                            <span className="font-face-florida button-text"> En savoir plus </span>
-                        </button>
+                                <span className="font-face-florida button-text"> En savoir plus </span>
+                            </button>
+                        </a>
 
                     </div>
 
@@ -257,8 +302,8 @@ export default function Home() {
                         <div className={"container in-row-forced justify-start"}>
                             <h2 className={"font-face-florida title-name"}> Adventure's Horizon </h2>
                             <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> Unity </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> School </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> Game </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Cours </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> Jeu </h2>
                         </div>
 
                         <div className={"container in-row justify-start"}>
@@ -286,12 +331,13 @@ export default function Home() {
                             </p>
 
                         </div>
-
-                        <button className="learn-more">
+                        <a target={"_blank"} href={"https://momocrash.itch.io/adventure-horizons"}>
+                            <button className="learn-more">
                                     <span className="circle" aria-hidden="true">
                                       <span className="icon arrow"></span></span>
-                            <span className="font-face-florida button-text"> En savoir plus </span>
-                        </button>
+                                <span className="font-face-florida button-text"> En savoir plus </span>
+                            </button>
+                        </a>
 
                     </div>
 
@@ -330,12 +376,14 @@ export default function Home() {
                             </p>
 
                         </div>
-
-                        <button className="learn-more">
+                        
+                        <a target={"_blank"} href={"https://github.com/MomoCrash/procedural-terrain-unity"}>
+                            <button className="learn-more">
                                     <span className="circle" aria-hidden="true">
                                       <span className="icon arrow"></span></span>
-                            <span className="font-face-florida button-text"> En savoir plus </span>
-                        </button>
+                                <span className="font-face-florida button-text"> En savoir plus </span>
+                            </button>
+                        </a>
                     </div>
 
                     <div className={"card"}>
@@ -371,12 +419,14 @@ export default function Home() {
                             </p>
 
                         </div>
-
-                        <button className="learn-more">
+                        
+                        <a target={"_blank"} href={"https://momocrash.itch.io/nichii"}>
+                            <button className="learn-more">
                                     <span className="circle" aria-hidden="true">
                                       <span className="icon arrow"></span></span>
-                            <span className="font-face-florida button-text"> En savoir plus </span>
-                        </button>
+                                <span className="font-face-florida button-text"> En savoir plus </span>
+                            </button>
+                        </a>
 
                     </div>
 
@@ -412,13 +462,14 @@ export default function Home() {
                             </p>
 
                         </div>
-
-                        <button className="learn-more">
+                        
+                        <a target={"_blank"} href={"https://momocrash.github.io/Beacon/"}>
+                            <button className="learn-more">
                                     <span className="circle" aria-hidden="true">
                                       <span className="icon arrow"></span></span>
-                            <span className="font-face-florida button-text"> En savoir plus </span>
-                        </button>
-
+                                <span className="font-face-florida button-text"> En savoir plus </span>
+                            </button>
+                        </a>
                     </div>
 
                     <div className={"card"}>
@@ -456,11 +507,13 @@ export default function Home() {
 
                         </div>
 
-                        <button className="learn-more">
+                        <a target={"_blank"} href={"https://momocrash.github.io/website-loiezhaut/"}>
+                            <button className="learn-more">
                                     <span className="circle" aria-hidden="true">
                                       <span className="icon arrow"></span></span>
-                            <span className="font-face-florida button-text"> En savoir plus </span>
-                        </button>
+                                <span className="font-face-florida button-text"> En savoir plus </span>
+                            </button>
+                        </a>
 
                     </div>
 
