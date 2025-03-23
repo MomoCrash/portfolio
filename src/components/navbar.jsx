@@ -33,7 +33,7 @@ function Navbar() {
             {windowDimensions.width < 1050 ? <Link to='/' className={"logo"}> Mon portfolio </Link> : ""}
             <ul className={isActive ? "navMenu active" : 'navMenu'}>
                 <li onClick={removeActive}>
-                    <a href={"/#"} className="navLink"> Mes liens <span className={"pprogress-bar"}> <span
+                    <a href={IsHome() ? "#" : "/"} className="navLink"> Mes liens <span className={"pprogress-bar"}> <span
                         className={"pprogress-bar-percent"}></span> </span> </a>
                 </li>
                 <li onClick={removeActive}>
