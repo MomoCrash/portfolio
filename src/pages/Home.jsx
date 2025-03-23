@@ -552,12 +552,14 @@ export default function Home() {
 
                             </p>
                         </div>
-
-                        <button className="learn-more">
+                        
+                        <a target={"_blank"} href={"https://github.com/MomoCrash/NetworkProject"}>
+                            <button className="learn-more">
                                     <span className="circle" aria-hidden="true">
                                       <span className="icon arrow"></span></span>
-                            <span className="font-face-florida button-text"> En savoir plus </span>
-                        </button>
+                                <span className="font-face-florida button-text"> En savoir plus </span>
+                            </button>
+                        </a>
 
                     </div>
 
