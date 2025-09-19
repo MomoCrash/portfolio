@@ -102,21 +102,21 @@ export default function Home() {
     }
 
 
-    function SkillPoint(string, number) {
-        return (<>
-            <p className={"project-objectives"}> {string} </p>
-            <ul className={"container in-row"}>
-                {[...Array(number)].map((x, i) =>
-                    <li key={i} className={"project-bullet"}></li>
-                )}
-                    {[...Array(5-number)].map((x, i) =>
-                        <li key={i} className={"project-bullet"}>
-                            <span className={"project-bullet plain"}></span>
-                        </li>
-                    )}
-                </ul>
-            </>);
-    }
+    // function SkillPoint(string, number) {
+    //     return (<>
+    //         <p className={"project-objectives"}> {string} </p>
+    //         <ul className={"container in-row"}>
+    //             {[...Array(number)].map((x, i) =>
+    //                 <li key={i} className={"project-bullet"}></li>
+    //             )}
+    //                 {[...Array(5-number)].map((x, i) =>
+    //                     <li key={i} className={"project-bullet"}>
+    //                         <span className={"project-bullet plain"}></span>
+    //                     </li>
+    //                 )}
+    //             </ul>
+    //         </>);
+    // }
 
     function PercentBar(name, first, second, third) {
         return (<>
@@ -206,8 +206,48 @@ export default function Home() {
                 {
                     LoadUnityPlayer()
                 }
-                
+
                 <div id={"projects"} className={"container in-column"}>
+
+                    <div className={"card"}>
+
+                        <div className={"container in-row-forced justify-start"}>
+                            <h2 className={"font-face-florida title-name"}> Breachborn </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> C++ </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Blueprint </h2>
+                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> jeu </h2>
+                        </div>
+
+                        <div className={"container in-row justify-start"}>
+                            <a 
+                               className={"project-image image-breachborn"}>
+                            </a>
+                            <p className={"profile-separator"}></p>
+                            <div className={"project-skills in-row"}>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "#fff47f"}}>     Unreal Engine 5 </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "lightskyblue"}}>Gameplay & Tools </span>
+                                <span className={"project-skills-descriptor"}
+                                      style={{borderColor: "indianred"}}>   Optimisation </span>
+                                {PercentBar("work distribution", 50, 25, 25)}
+                            </div>
+                            <p className={"profile-separator"}></p>
+                            <p className={"project-desc"}>
+                                MIRD est un projet ambitieux de moteur de jeu sindé en deux pôles :
+                                une partie rendu 3D fait en utilisant DirectX12. Ainsi qu'une partie
+                                moteur avec un systeme ECS et gestion de scripts (similaire à Unity)
+                            </p>
+
+                        </div>
+                        <a target={"_blank"} href={"https://github.com/MomoCrash/MIRD"}>
+                            <button className="learn-more">
+                                    <span className="circle" aria-hidden="true">
+                                      <span className="icon arrow"></span></span>
+                                <span className="font-face-florida button-text"> En savoir plus </span>
+                            </button>
+                        </a>
+                    </div>
 
                     <div className={"card"}>
 
@@ -376,7 +416,7 @@ export default function Home() {
                             </p>
 
                         </div>
-                        
+
                         <a target={"_blank"} href={"https://github.com/MomoCrash/procedural-terrain-unity"}>
                             <button className="learn-more">
                                     <span className="circle" aria-hidden="true">
@@ -419,7 +459,7 @@ export default function Home() {
                             </p>
 
                         </div>
-                        
+
                         <a target={"_blank"} href={"https://momocrash.itch.io/nichii"}>
                             <button className="learn-more">
                                     <span className="circle" aria-hidden="true">
@@ -462,7 +502,7 @@ export default function Home() {
                             </p>
 
                         </div>
-                        
+
                         <a target={"_blank"} href={"https://momocrash.github.io/Beacon/"}>
                             <button className="learn-more">
                                     <span className="circle" aria-hidden="true">
@@ -552,7 +592,7 @@ export default function Home() {
 
                             </p>
                         </div>
-                        
+
                         <a target={"_blank"} href={"https://github.com/MomoCrash/NetworkProject"}>
                             <button className="learn-more">
                                     <span className="circle" aria-hidden="true">

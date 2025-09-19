@@ -249,6 +249,14 @@
     background-size: 100%;
 }
 
+.image-breachborn {
+    background-image: url("../../public/breachborn.png");
+    background-size: 120%;
+    background-position: -30px;
+    background-repeat: no-repeat;
+}
+
+
 .projet-tag {
     font-family: CaviarDreams;
     color: black;
