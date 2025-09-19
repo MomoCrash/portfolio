@@ -256,6 +256,13 @@
     background-repeat: no-repeat;
 }
 
+.image-paperstrike {
+    background-image: url("../../public/paperstrike.jpg");
+    background-size: 90%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
 
 .projet-tag {
     font-family: CaviarDreams;

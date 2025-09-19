@@ -49,9 +49,27 @@ export default function Home() {
             ],
             percent: [50, 25, 25],
             desc: "Breachborn est un jeu 3D dans le style rogue-like. Dans un monde fantastique en pleine destruction. Faites de votre village le rempart de l'humanité, relevez vous de chacune de vos morts plus fort, aiguisez au maximum le choix de vos équipements. Parcourez une infinité d'îles procédurales.",
-            link: "https://github.com/MomoCrash/MIRD",
+            link: "",
             imageType: "image",
             imageClass: "image-breachborn"
+        },
+        {
+            title: "Paper Strike",
+            tags: [
+                { label: "Unity", color: "#53c2fe" },
+                { label: "Stage", color: "#f59e26" },
+                { label: "Jeu", color: "#fee971" }
+            ],
+            skills: [
+                { label: "Photon Fusion 2", color: "#fff47f" },
+                { label: "Coordination", color: "lightskyblue" },
+                { label: "Optimisation", color: "indianred" }
+            ],
+            percent: [50, 25, 25],
+            desc: "Paper Strike est un jeu mobile de battle royal à 5 joueurs en parties rapides de 3 minutes. J'ai travaillé en stage sur l'Alpha. J'ai développé intégralement le système de multijoueur avec Fusion 2 et j'ai tester et corriger en profondeur pour faire la release sur le marché.",
+            link: "https://play.google.com/store/apps/details?id=com.PaperStrike",
+            imageType: "image",
+            imageClass: "image-paperstrike"
         },
         {
             title: "Projet MIRD",
