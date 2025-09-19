@@ -3,7 +3,341 @@ import { Unity, useUnityContext  } from "react-unity-webgl"
 import React, {useEffect, useState} from "react";
 import { useInView } from "react-intersection-observer";
 
+// LazyIframe: only sets iframe src when it becomes visible
+function LazyIframe({ src, title, className }) {
+    const [ref, inView] = useInView({ threshold: 0.25, triggerOnce: true });
+    const [loadedSrc, setLoadedSrc] = useState(null);
+
+    useEffect(() => {
+        if (inView && !loadedSrc) setLoadedSrc(src);
+    }, [inView, src, loadedSrc]);
+
+    return (
+        <div ref={ref}>
+            {loadedSrc ? (
+                <iframe
+                    className={className}
+                    src={loadedSrc}
+                    title={title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                ></iframe>
+            ) : (
+                <div className={className} />
+            )}
+        </div>
+    );
+}
+
 export default function Home() {
+    // Project data array
+    const [projects, setProjects] = useState([
+        {
+            title: "Breachborn",
+            tags: [
+                { label: "C++", color: "#53c2fe" },
+                { label: "Blueprint", color: "#53c2fe" },
+                { label: "Personnel", color: "#f59e26" },
+                { label: "Jeu", color: "#fee971" }
+            ],
+            skills: [
+                { label: "Unreal Engine 5", color: "#fff47f" },
+                { label: "Gameplay & Tools", color: "lightskyblue" },
+                { label: "Optimisation", color: "indianred" }
+            ],
+            percent: [50, 25, 25],
+            desc: "MIRD est un projet ambitieux de moteur de jeu sindé en deux pôles : une partie rendu 3D fait en utilisant DirectX12. Ainsi qu'une partie moteur avec un systeme ECS et gestion de scripts (similaire à Unity)",
+            link: "https://github.com/MomoCrash/MIRD",
+            imageType: "image",
+            imageClass: "image-breachborn"
+        },
+        {
+            title: "Projet MIRD",
+            tags: [
+                { label: "C++", color: "#53c2fe" },
+                { label: "Cours", color: "#f59e26" },
+                { label: "Projet", color: "#fee971" }
+            ],
+            skills: [
+                { label: "DirectX12", color: "#fff47f" },
+                { label: "Architecture", color: "lightskyblue" },
+                { label: "Optimisation", color: "indianred" }
+            ],
+            percent: [50, 25, 25],
+            desc: "MIRD est un projet ambitieux de moteur de jeu sindé en deux pôles : une partie rendu 3D fait en utilisant DirectX12. Ainsi qu'une partie moteur avec un systeme ECS et gestion de scripts (similaire à Unity)",
+            link: "https://github.com/MomoCrash/MIRD",
+            imageType: "iframe",
+            imageSrc: "https://www.youtube.com/embed/QEAM5Ok1Sfg?si=P4eF4k2Xae7HeSQv?&autoplay=1&mute=1&loop=1"
+        },
+        {
+            title: "Rebreaker",
+            tags: [
+                { label: "C++", color: "#53c2fe" },
+                { label: "Cours", color: "#f59e26" },
+                { label: "Jeu", color: "#fee971" }
+            ],
+            skills: [
+                { label: "2D Game", color: "#fff47f" },
+                { label: "Game Engine", color: "lightskyblue" },
+                { label: "Juiciness", color: "indianred" }
+            ],
+            percent: [30, 30, 40],
+            desc: "ReBreaker, est une réplique d'un Casse-Brique dans une version surbooster, avec pour objectif un maximum de feedbacks visuels, d'animation d'explosion et de dynamisme !!",
+            link: "https://github.com/MomoCrash/ReBreaker",
+            imageType: "iframe",
+            imageSrc: "https://www.youtube.com/embed/NSxrJB3lpgI?si=dv7hXxQDChQ8zmGi?&autoplay=1&mute=1&loop=1"
+        },
+        {
+            title: "Adventure's Horizon",
+            tags: [
+                { label: "Unity", color: "#53c2fe" },
+                { label: "Cours", color: "#f59e26" },
+                { label: "Jeu", color: "#fee971" }
+            ],
+            skills: [
+                { label: "Team Work", color: "#fff47f" },
+                { label: "Gameplay", color: "lightskyblue" },
+                { label: "Game Design", color: "indianred" }
+            ],
+            percent: [40, 35, 25],
+            desc: "Adventure's Horizon, est un jeu Die & Retry ou vous foncez tête baissé dans les ennemies... mourrez... passez chez le marchand... et vous vous vengez plus fort que jamais !!",
+            link: "https://momocrash.itch.io/adventure-horizons",
+            imageType: "iframe",
+            imageSrc: "https://www.youtube.com/embed/EY8LksY78I8?si=HeFElT-CKeUNPwNY?&autoplay=1&mute=1&loop=1"
+        },
+        {
+            title: "Endless Terrain",
+            tags: [
+                { label: "Unity", color: "#53c2fe" },
+                { label: "Personnel", color: "#f59e26" },
+                { label: "Projet", color: "#fee971" }
+            ],
+            skills: [
+                { label: "Geometry", color: "#fff47f" },
+                { label: "Maths", color: "lightskyblue" },
+                { label: "Optimisation", color: "indianred" }
+            ],
+            percent: [35, 35, 30],
+            desc: "Ce projet de génération procédurale de terrain infini, permet la génération rapide de mesh de terrain en fonction d'une Height Map. Le tout étant ultra modulable et configurable.",
+            link: "https://github.com/MomoCrash/procedural-terrain-unity",
+            imageType: "iframe",
+            imageSrc: "https://www.youtube.com/embed/7ZslUnYMS2E?si=dv7hXxQDChQ8zmGi?&autoplay=1&mute=1&loop=1"
+        },
+        {
+            title: "Nichii",
+            tags: [
+                { label: "Unity", color: "#53c2fe" },
+                { label: "Jeu", color: "#f59e26" },
+                { label: "Personnel", color: "#fee971" }
+            ],
+            skills: [
+                { label: "Mobile Dev.", color: "#fff47f" },
+                { label: "Programming", color: "lightskyblue" },
+                { label: "Game Design", color: "indianred" }
+            ],
+            percent: [40, 35, 25],
+            desc: "Nichii est un projet de coeur, ce jeu Idle mobile vous permet de construire votre ville. Avec une phase de gameplay prenante où vous explorez librement le monde, puis retourez construire votre ville qui produira encore plus et même quand vous n'êtes plus sur le jeu.",
+            link: "https://momocrash.itch.io/nichii",
+            imageType: "iframe",
+            imageSrc: "https://www.youtube.com/embed/X10c4__0K7k?si=sL_xF1zCWQ-9GYj2?&autoplay=1&mute=1&loop=1"
+        },
+        {
+            title: "Beacon",
+            tags: [
+                { label: "ReactJS", color: "#53c2fe" },
+                { label: "Equipe", color: "#f59e26" },
+                { label: "Website", color: "#fee971" }
+            ],
+            skills: [
+                { label: "Backend", color: "#fff47f" },
+                { label: "Database", color: "lightskyblue" },
+                { label: "Riot API", color: "indianred" }
+            ],
+            percent: [40, 30, 30],
+            desc: "Beacon est un projet ambitieux de recherche, d'analyse et de suivis de joueur sur le jeux League Of Legends. La plateforme à pour objectif de faire une analyse d'un joueur et de lui recommander des méthodes de jeu globales et personnalisé.",
+            link: "https://momocrash.github.io/Beacon/",
+            imageType: "image",
+            imageClass: "image-beacon"
+        },
+        {
+            title: "Template Restaurant",
+            tags: [
+                { label: "ReactJS", color: "#53c2fe" },
+                { label: "Personnel", color: "#f59e26" },
+                { label: "Website", color: "#fee971" }
+            ],
+            skills: [
+                { label: "Design", color: "#fff47f" },
+                { label: "UI/UX", color: "lightskyblue" },
+                { label: "Fonctionnalités", color: "indianred" }
+            ],
+            percent: [40, 30, 30],
+            desc: "Le site web L'oie'Z'haut est un modèle dans lequelle j'ai cherché à faire un UI et un design efficace pour un restaurant. En mettant en avant des fonctionnalité simple d'utilisation sur mobile et ordinateur pour une navigation simple.",
+            link: "https://momocrash.github.io/website-loiezhaut/",
+            imageType: "image",
+            imageClass: "image-website"
+        },
+        {
+            title: "Multiplayer",
+            tags: [
+                { label: "C++", color: "#53c2fe" },
+                { label: "Network", color: "#f59e26" },
+                { label: "Cours", color: "#fee971" }
+            ],
+            skills: [
+                { label: "API Usage", color: "#fff47f" },
+                { label: "Encapsulation", color: "lightskyblue" },
+                { label: "Client–Server", color: "indianred" }
+            ],
+            percent: [40, 20, 40],
+            desc: "Plus un projet qu'un réel jeu, il consiste en la syncronisation de plusieurs clients à un serveur distant ou local via un protocol UDP, en utilisant une API bas niveau réseau. Je vous recommande de consulter la page Github",
+            link: "https://github.com/MomoCrash/NetworkProject",
+            imageType: "iframe",
+            imageSrc: "https://www.youtube.com/embed/vmt-WsIYRVI?si=GjEhPNZ6n4rLRwzD?&autoplay=1&mute=1&loop=1"
+        }
+    ]);
+
+    // Sorting function
+    const sortProjects = () => {
+        const sorted = [...projects].sort((a, b) => {
+            return a.tags[0].label.localeCompare(b.tags[0].label, undefined, { sensitivity: 'base' });
+        });
+        setProjects(sorted);
+    };
+
+    // Tag filter state
+    const [activeTag, setActiveTag] = useState(null);
+
+    // Hidden tag buttons state (only hides the button in the tag bar)
+    // will be initialized to any tags that are not in preferredOrder
+    const [hiddenTagButtons, setHiddenTagButtons] = useState([]);
+
+    // expose functions to hide/show tag buttons only (does not remove labels on cards)
+    useEffect(() => {
+        window.hideTagButton = (tag) => {
+            if (!tag) return;
+            setHiddenTagButtons(prev => {
+                const next = Array.from(new Set([...(prev || []), tag]));
+                return next;
+            });
+            setActiveTag(prev => (prev === tag ? 'All' : prev));
+        };
+
+        window.showTagButton = (tag) => {
+            if (!tag) return;
+            setHiddenTagButtons(prev => (prev || []).filter(t => t !== tag));
+        };
+
+        window.setHiddenTagButtons = (arr) => {
+            if (!Array.isArray(arr)) return;
+            setHiddenTagButtons(arr);
+            setActiveTag(prev => (arr.includes(prev) ? 'All' : prev));
+        };
+
+        window.getHiddenTagButtons = () => (hiddenTagButtons || []);
+
+        return () => {
+            delete window.hideTagButton;
+            delete window.showTagButton;
+            delete window.setHiddenTagButtons;
+            delete window.getHiddenTagButtons;
+        };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    // Collect unique normalized tags (preserve order of first appearance)
+    const allTags = (() => {
+        const seen = new Set();
+        const list = [];
+        projects.forEach(p => {
+            p.tags.forEach(t => {
+                const n = t.label;
+                if (!seen.has(n)) {
+                    seen.add(n);
+                    list.push(n);
+                }
+            });
+        });
+        return list;
+    })();
+
+    // Preferred display order provided by user (case-insensitive match)
+    const preferredOrder = ['Jeu', 'Projet', 'Personnel', 'Cours', 'C++', 'Blueprint', 'Unity', 'Website'];
+
+    // Build canonical preferred list from tags that actually exist in allTags
+    const preferredCanonical = preferredOrder.map(pref => allTags.find(t => t.toLowerCase() === pref.toLowerCase())).filter(Boolean);
+
+    // Any tags not in the preferredCanonical are considered "other"
+    const otherTags = allTags.filter(t => !preferredCanonical.includes(t));
+
+    // Final ordered tags: preferred ones first, then any remaining (they will be hidden by default)
+    const orderedTags = [...preferredCanonical, ...otherTags];
+
+    // Initialize hiddenTagButtons to hide all 'other' tags (run when projects change)
+    useEffect(() => {
+        if (otherTags.length > 0) {
+            setHiddenTagButtons(otherTags);
+            // reset activeTag if it becomes hidden
+            setActiveTag(prev => (otherTags.includes(prev) ? 'All' : prev));
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [projects]);
+
+    // keep window.getHiddenTagButtons up-to-date
+    useEffect(() => {
+        window.getHiddenTagButtons = () => (hiddenTagButtons || []);
+        return () => { delete window.getHiddenTagButtons };
+    }, [hiddenTagButtons]);
+
+    // Filtered projects based on activeTag
+    const filteredProjects = activeTag && activeTag !== 'All'
+        ? projects.filter(p => p.tags.some(t => t.label === activeTag))
+        : projects;
+
+    // Displayed projects with animation control
+    const [displayedProjects, setDisplayedProjects] = useState(projects);
+    const [isExiting, setIsExiting] = useState(false);
+    const [isEntering, setIsEntering] = useState(false);
+    // Only play the entry 'animate-in' on initial mount to avoid re-running it after filter transitions
+    const [initialMount, setInitialMount] = useState(true);
+
+    // Keep displayedProjects in sync with base projects initially
+    useEffect(() => {
+        setDisplayedProjects(projects);
+    }, [projects]);
+
+    // clear initialMount after first render/animation window
+    useEffect(() => {
+        const t = setTimeout(() => setInitialMount(false), 420);
+        return () => clearTimeout(t);
+    }, []);
+
+    // Handle filter transitions: exit to right, then replace and enter from left
+    useEffect(() => {
+        const next = filteredProjects;
+        // If same set (by title), do nothing
+        const currentIds = displayedProjects.map(p => p.title).join('|');
+        const nextIds = next.map(p => p.title).join('|');
+        if (currentIds === nextIds) return;
+
+        // start exit animation
+        setIsExiting(true);
+
+        const exitTimer = setTimeout(() => {
+            // replace list
+            setDisplayedProjects(next);
+            setIsExiting(false);
+            // start enter animation
+            setIsEntering(true);
+            const enterTimer = setTimeout(() => setIsEntering(false), 320);
+            return () => clearTimeout(enterTimer);
+        }, 320);
+
+        return () => clearTimeout(exitTimer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [activeTag, projects]);
 
     const useCheckMobileScreen = () => {
         const [width, setWidth] = useState(window.innerWidth);
@@ -207,402 +541,71 @@ export default function Home() {
                     LoadUnityPlayer()
                 }
 
+                {/* Tag filter buttons */}
+                <div className="tag-buttons-container">
+                    <button
+                        className={"sort-btn" + (activeTag === null || activeTag === 'All' ? " active-tag" : "")}
+                        onClick={() => setActiveTag('All')}
+                    >
+                        All
+                    </button>
+                    {orderedTags.filter(t => !(hiddenTagButtons || []).includes(t)).map(tag => (
+                        <button
+                            key={tag}
+                            className={"sort-btn" + (activeTag === tag ? " active-tag" : "")}
+                            onClick={() => setActiveTag(tag)}
+                        >
+                            {tag}
+                        </button>
+                    ))}
+                </div>
+
                 <div id={"projects"} className={"container in-column"}>
+                    {displayedProjects.map((project, idx) => {
+                        let cardClass = 'card';
+                        if (isExiting) cardClass += ' exit-right';
+                        else if (isEntering) cardClass += ' enter-left';
+                        else if (initialMount) cardClass += ' animate-in';
 
-                    <div className={"card"}>
-
-                        <div className={"container in-row-forced justify-start"}>
-                            <h2 className={"font-face-florida title-name"}> Breachborn </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> C++ </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Blueprint </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> jeu </h2>
-                        </div>
-
-                        <div className={"container in-row justify-start"}>
-                            <a 
-                               className={"project-image image-breachborn"}>
-                            </a>
-                            <p className={"profile-separator"}></p>
-                            <div className={"project-skills in-row"}>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "#fff47f"}}>     Unreal Engine 5 </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "lightskyblue"}}>Gameplay & Tools </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "indianred"}}>   Optimisation </span>
-                                {PercentBar("work distribution", 50, 25, 25)}
-                            </div>
-                            <p className={"profile-separator"}></p>
-                            <p className={"project-desc"}>
-                                MIRD est un projet ambitieux de moteur de jeu sindé en deux pôles :
-                                une partie rendu 3D fait en utilisant DirectX12. Ainsi qu'une partie
-                                moteur avec un systeme ECS et gestion de scripts (similaire à Unity)
-                            </p>
-
-                        </div>
-                        <a target={"_blank"} href={"https://github.com/MomoCrash/MIRD"}>
-                            <button className="learn-more">
-                                    <span className="circle" aria-hidden="true">
-                                      <span className="icon arrow"></span></span>
-                                <span className="font-face-florida button-text"> En savoir plus </span>
-                            </button>
-                        </a>
-                    </div>
-
-                    <div className={"card"}>
-
-                        <div className={"container in-row-forced justify-start"}>
-                            <h2 className={"font-face-florida title-name"}> Projet MIRD </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> C++ </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Cours </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> Projet </h2>
-                        </div>
-
-                        <div className={"container in-row justify-start"}>
-                            <iframe ref={ref} className={"project-image"}
-                                    src="https://www.youtube.com/embed/QEAM5Ok1Sfg?si=P4eF4k2Xae7HeSQv?&autoplay=1&mute=1&loop=1"
-                                    title="YouTube video player" frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
-                            </iframe>
-                            <p className={"profile-separator"}></p>
-                            <div className={"project-skills in-row"}>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "#fff47f"}}>     DirectX12 </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "lightskyblue"}}>Architecture </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "indianred"}}>   Optimisation </span>
-                                {PercentBar("work distribution", 50, 25, 25)}
-                            </div>
-                            <p className={"profile-separator"}></p>
-                            <p className={"project-desc"}>
-                                MIRD est un projet ambitieux de moteur de jeu sindé en deux pôles :
-                                une partie rendu 3D fait en utilisant DirectX12. Ainsi qu'une partie
-                                moteur avec un systeme ECS et gestion de scripts (similaire à Unity)
-                            </p>
-
-                        </div>
-                        <a target={"_blank"} href={"https://github.com/MomoCrash/MIRD"}>
-                            <button className="learn-more">
-                                    <span className="circle" aria-hidden="true">
-                                      <span className="icon arrow"></span></span>
-                                <span className="font-face-florida button-text"> En savoir plus </span>
-                            </button>
-                        </a>
-                    </div>
-
-                    <div className={"card"}>
-
-                        <div className={"container in-row-forced justify-start"}>
-                            <h2 className={"font-face-florida title-name"}> Rebreaker</h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> C++ </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Cours </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> Jeu </h2>
-                        </div>
-
-                        <div className={"container in-row justify-start"}>
-                            <iframe ref={ref} className={"project-image"}
-                                    src="https://www.youtube.com/embed/NSxrJB3lpgI?si=dv7hXxQDChQ8zmGi?&autoplay=1&mute=1&loop=1"
-                                    title="YouTube video player" frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
-                            </iframe>
-                            <p className={"profile-separator"}></p>
-                            <div className={"project-skills in-row"}>
-                                <div className={"project-mobile-col"}>
-                                    <span className={"project-skills-descriptor"} style={{borderColor: "#fff47f"}}>         2D Game </span>
-                                    <span className={"project-skills-descriptor"} style={{borderColor: "lightskyblue"}}>    Game Engine </span>
-                                    <span className={"project-skills-descriptor"}
-                                          style={{borderColor: "indianred"}}>       Juiciness </span>
+                        return (
+                            <div
+                                className={cardClass}
+                                key={project.title + idx}
+                                style={{ animationDelay: `${idx * 60}ms` }}
+                            >
+                                <div className={"container in-row-forced justify-start"}>
+                                    <h2 className={"font-face-florida title-name"}>{project.title}</h2>
+                                    {project.tags.map((tag, i) => (
+                                        <h2 className={"projet-tag"} style={{ backgroundColor: tag.color }} key={i}>{tag.label}</h2>
+                                    ))}
                                 </div>
-                                {PercentBar("work distribution", 30, 30, 40)}
+                                <div className={"container in-row justify-start"}>
+                                    {project.imageType === "image" ? (
+                                        <a className={`project-image ${project.imageClass}`}></a>
+                                    ) : (
+                                        <LazyIframe className={"project-image"} src={project.imageSrc} title={project.title} />
+                                    )}
+                                    <p className={"profile-separator"}></p>
+                                    <div className={"project-skills in-row"}>
+                                        {project.skills.map((skill, i) => (
+                                            <span className={"project-skills-descriptor"} style={{ borderColor: skill.color }} key={i}>{skill.label}</span>
+                                        ))}
+                                        {PercentBar("work distribution", ...project.percent)}
+                                    </div>
+                                    <p className={"profile-separator"}></p>
+                                    <p className={"project-desc"}>{project.desc}</p>
+                                </div>
+                                <a target={"_blank"} href={project.link}>
+                                    <button className="learn-more">
+                                        <span className="circle" aria-hidden="true">
+                                            <span className="icon arrow"></span>
+                                        </span>
+                                        <span className="font-face-florida button-text"> En savoir plus </span>
+                                    </button>
+                                </a>
                             </div>
-                            <p className={"profile-separator"}></p>
-                            <p className={"project-desc"}>
-                                ReBreaker, est une réplique d'un Casse-Brique dans une version surbooster,
-                                avec pour objectif un maximum de feedbacks visuels, d'animation d'explosion et de
-                                dynamisme !!
-                            </p>
-
-                        </div>
-
-                        <a target={"_blank"} href={"https://github.com/MomoCrash/ReBreaker"}>
-                            <button className="learn-more">
-                                    <span className="circle" aria-hidden="true">
-                                      <span className="icon arrow"></span></span>
-                                <span className="font-face-florida button-text"> En savoir plus </span>
-                            </button>
-                        </a>
-
-                    </div>
-
-                    <div className={"card"}>
-
-                        <div className={"container in-row-forced justify-start"}>
-                            <h2 className={"font-face-florida title-name"}> Adventure's Horizon </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> Unity </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Cours </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> Jeu </h2>
-                        </div>
-
-                        <div className={"container in-row justify-start"}>
-                            <span ref={ref}>
-                                <iframe className={"project-image"}
-                                        src="https://www.youtube.com/embed/EY8LksY78I8?si=HeFElT-CKeUNPwNY?&autoplay=1&mute=1&loop=1"
-                                        title="YouTube video player" frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                            </span>
-                            <p className={"profile-separator"}></p>
-                            <div className={"project-skills in-row"}>
-
-                                <span className={"project-skills-descriptor"} style={{borderColor: "#fff47f"}}>     Team Work </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "lightskyblue"}}>Gameplay </span>
-                                <span className={"project-skills-descriptor"} style={{borderColor: "indianred"}}>   Game Design </span>
-                                {PercentBar("work distribution", 40, 35, 25)}
-                            </div>
-                            <p className={"profile-separator"}></p>
-                            <p className={"project-desc"}>
-                                Adventure's Horizon, est un jeu Die & Retry ou vous <br/>
-                                -foncez tête baissé dans les ennemies...
-                                -mourrez... -passez chez le marchand... -et vous vous vengez plus fort que jamais !!
-                            </p>
-
-                        </div>
-                        <a target={"_blank"} href={"https://momocrash.itch.io/adventure-horizons"}>
-                            <button className="learn-more">
-                                    <span className="circle" aria-hidden="true">
-                                      <span className="icon arrow"></span></span>
-                                <span className="font-face-florida button-text"> En savoir plus </span>
-                            </button>
-                        </a>
-
-                    </div>
-
-                    <div className={"card"}>
-
-                        <div className={"container in-row-forced justify-start"}>
-                            <h2 className={"font-face-florida title-name"}> Endless Terrain </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> Unity </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Project </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> Personal </h2>
-                        </div>
-
-                        <div className={"container in-row justify-start"}>
-                            <iframe ref={ref} className={"project-image"}
-                                    src="https://www.youtube.com/embed/7ZslUnYMS2E?si=dv7hXxQDChQ8zmGi?&autoplay=1&mute=1&loop=1"
-                                    title="YouTube video player" frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
-                            </iframe>
-                            <p className={"profile-separator"}></p>
-                            <div className={"project-skills in-row"}>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "#fff47f"}}>     Geometry </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "lightskyblue"}}>Maths </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "indianred"}}>   Optimisation </span>
-                                {PercentBar("work distribution", 35, 35, 30)}
-                            </div>
-                            <p className={"profile-separator"}></p>
-                            <p className={"project-desc"}>
-                                Ce projet de génération procédurale de terrain infini, permet la génération
-                                rapide de mesh de terrain en fonction d'une Height Map.
-                                Le tout étant ultra modulable et configurable.
-
-                            </p>
-
-                        </div>
-
-                        <a target={"_blank"} href={"https://github.com/MomoCrash/procedural-terrain-unity"}>
-                            <button className="learn-more">
-                                    <span className="circle" aria-hidden="true">
-                                      <span className="icon arrow"></span></span>
-                                <span className="font-face-florida button-text"> En savoir plus </span>
-                            </button>
-                        </a>
-                    </div>
-
-                    <div className={"card"}>
-
-                        <div className={"container in-row-forced justify-start"}>
-                            <h2 className={"font-face-florida title-name"}> Nichii </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> Unity </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Game </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}>Personal </h2>
-                        </div>
-
-                        <div className={"container in-row justify-start"}>
-                            <iframe className={"project-image"}
-                                    src="https://www.youtube.com/embed/X10c4__0K7k?si=sL_xF1zCWQ-9GYj2?&autoplay=1&mute=1&loop=1"
-                                    title="YouTube video player" frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                            <p className={"profile-separator"}></p>
-                            <div className={"project-skills in-row"}>
-
-                                <span className={"project-skills-descriptor"} style={{borderColor: "#fff47f"}}>     Mobile Dev. </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "lightskyblue"}}>Programming </span>
-                                <span className={"project-skills-descriptor"} style={{borderColor: "indianred"}}>   Game Design </span>
-                                {PercentBar("work distribution", 40, 35, 25)}
-                            </div>
-                            <p className={"profile-separator"}></p>
-                            <p className={"project-desc"}>
-                                Nichii est un projet de coeur, ce jeu Idle mobile vous permet de construire votre ville.
-                                Avec une phase de gameplay prenante où vous explorez librement le monde, puis retourez
-                                construire votre ville qui produira encore plus et même quand vous n'êtes plus sur le
-                                jeu.
-                            </p>
-
-                        </div>
-
-                        <a target={"_blank"} href={"https://momocrash.itch.io/nichii"}>
-                            <button className="learn-more">
-                                    <span className="circle" aria-hidden="true">
-                                      <span className="icon arrow"></span></span>
-                                <span className="font-face-florida button-text"> En savoir plus </span>
-                            </button>
-                        </a>
-
-                    </div>
-
-                    <div className={"card"}>
-
-                        <div className={"container in-row-forced justify-start"}>
-                            <h2 className={"font-face-florida title-name"}> Beacon </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> ReactJS </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> In team </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> Website </h2>
-                        </div>
-
-                        <div className={"container in-row justify-start"}>
-                            <a href={"https://momocrash.github.io/Beacon/"} target={"_blank"}
-                               className={"project-image image-beacon"}>
-                            </a>
-                            <p className={"profile-separator"}></p>
-                            <div className={"project-skills in-row"}>
-
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "#fff47f"}}>     Backend   </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "lightskyblue"}}> Database </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "indianred"}}>   Riot API </span>
-                                {PercentBar("répartition travail", 40, 30, 30)}
-                            </div>
-                            <p className={"profile-separator"}></p>
-                            <p className={"project-desc"}>
-                                Beacon est un projet ambitieux de recherche, d'analyse et de suivis de joueur sur le
-                                jeux League Of Legends. La plateforme à pour objectif de faire une analyse d'un joueur
-                                et de lui recommander des méthodes de jeu globales et personnalisé.
-                            </p>
-
-                        </div>
-
-                        <a target={"_blank"} href={"https://momocrash.github.io/Beacon/"}>
-                            <button className="learn-more">
-                                    <span className="circle" aria-hidden="true">
-                                      <span className="icon arrow"></span></span>
-                                <span className="font-face-florida button-text"> En savoir plus </span>
-                            </button>
-                        </a>
-                    </div>
-
-                    <div className={"card"}>
-
-                        <div className={"container in-row-forced justify-start"}>
-                            <h2 className={"font-face-florida title-name"}> Template Restaurant </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> ReactJS </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Personal </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> Website </h2>
-                        </div>
-
-                        <div className={"container in-row justify-start"}>
-                            <a href={"https://momocrash.github.io/website-loiezhaut/"}
-                               target={"_blank"}
-                               className={"project-image image-website"}>
-                            </a>
-                            <p className={"profile-separator"}></p>
-                            <div className={"project-skills in-row"}>
-
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "#fff47f"}}>     Design </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "lightskyblue"}}> UI/UX </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "indianred"}}>   Fonctionnalités </span>
-                                {PercentBar("répartition travail", 40, 30, 30)}
-                            </div>
-                            <p className={"profile-separator"}></p>
-                            <p className={"project-desc"}>
-                                Le site web L'oie'Z'haut est un modèle dans lequelle j'ai
-                                cherché à faire un UI et un design efficace pour un restaurant.
-                                En mettant en avant des fonctionnalité simple d'utilisation sur mobile et ordinateur
-                                pour une navigation simple.
-                            </p>
-
-                        </div>
-
-                        <a target={"_blank"} href={"https://momocrash.github.io/website-loiezhaut/"}>
-                            <button className="learn-more">
-                                    <span className="circle" aria-hidden="true">
-                                      <span className="icon arrow"></span></span>
-                                <span className="font-face-florida button-text"> En savoir plus </span>
-                            </button>
-                        </a>
-
-                    </div>
-
-                    <div className={"card"}>
-
-                        <div className={"container in-row-forced justify-start"}>
-                            <h2 className={"font-face-florida title-name"}> Multiplayer </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#53c2fe"}}> C++ </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#f59e26"}}> Network </h2>
-                            <h2 className={"projet-tag"} style={{backgroundColor: "#fee971"}}> School </h2>
-                        </div>
-
-                        <div className={"container in-row justify-start"}>
-                            <iframe ref={ref} className={"project-image"}
-                                    src="https://www.youtube.com/embed/vmt-WsIYRVI?si=GjEhPNZ6n4rLRwzD?&autoplay=1&mute=1&loop=1"
-                                    title="YouTube video player" frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
-                            </iframe>
-                            <p className={"profile-separator"}></p>
-                            <div className={"project-skills in-row"}>
-                                <span className={"project-skills-descriptor"} style={{borderColor: "#fff47f"}}>     API Usage </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "lightskyblue"}}>Encapsulation </span>
-                                <span className={"project-skills-descriptor"}
-                                      style={{borderColor: "indianred"}}>   Client–Server </span>
-                                {PercentBar("work distribution", 40, 20, 40)}
-                            </div>
-                            <p className={"profile-separator"}></p>
-                            <p className={"project-desc"}>
-                                Plus un projet qu'un réel jeu, il consiste en la syncronisation de plusieurs clients
-                                à un serveur distant ou local via un protocol UDP, en utilisant une API bas niveau
-                                réseau.
-                                <br/>
-                                Je vous recommande de consulter la page Github
-
-                            </p>
-                        </div>
-
-                        <a target={"_blank"} href={"https://github.com/MomoCrash/NetworkProject"}>
-                            <button className="learn-more">
-                                    <span className="circle" aria-hidden="true">
-                                      <span className="icon arrow"></span></span>
-                                <span className="font-face-florida button-text"> En savoir plus </span>
-                            </button>
-                        </a>
-
-                    </div>
-
+                        )
+                    })}
                 </div>
 
             </div>
