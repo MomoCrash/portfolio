@@ -48,7 +48,7 @@ export default function Home() {
                 { label: "Optimisation", color: "indianred" }
             ],
             percent: [50, 25, 25],
-            desc: "MIRD est un projet ambitieux de moteur de jeu sindé en deux pôles : une partie rendu 3D fait en utilisant DirectX12. Ainsi qu'une partie moteur avec un systeme ECS et gestion de scripts (similaire à Unity)",
+            desc: "Breachborn est un jeu 3D dans le style rogue-like. Dans un monde fantastique en pleine destruction. Faites de votre village le rempart de l'humanité, relevez vous de chacune de vos morts plus fort, aiguisez au maximum le choix de vos équipements. Parcourez une infinité d'îles procédurales.",
             link: "https://github.com/MomoCrash/MIRD",
             imageType: "image",
             imageClass: "image-breachborn"
