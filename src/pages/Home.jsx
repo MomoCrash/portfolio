@@ -34,7 +34,19 @@ function LazyIframe({ src, title, className }) {
 export default function Home() {
     const initialLang = (typeof window !== 'undefined' && localStorage.getItem('lang')) || 'en';
     const [lang, setLang] = useState(initialLang);
-    useEffect(() => { if (typeof window !== 'undefined') localStorage.setItem('lang', lang); }, [lang]);
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            try {
+                localStorage.setItem('lang', lang);
+            } catch (e) {
+            }
+
+            try {
+                window.dispatchEvent(new CustomEvent('langChanged', { detail: lang }));
+            } catch (e) {
+            }
+        }
+    }, [lang]);
 
     // Tag translations (display only)
     const tagTranslations = {
@@ -433,16 +445,16 @@ export default function Home() {
 
                     <div className={"game-preview-card"}>
 
-                        <h2 className={"font-face-florida title-name"}> mes jeux </h2>
+                        <h2 className={"font-face-florida title-name"}> {lang === "en" ? "my games" : "mes jeux"} </h2>
                         {projectDescription[localStorage.getItem("currentGame") ? parseInt(localStorage.getItem("currentGame")) : 0]}
                         <Unity className={"game-preview"}
                                unityProvider={unityProviders[localStorage.getItem("currentGame") ? parseInt(localStorage.getItem("currentGame")) : 0].unityProvider}>
                         </Unity>
 
                         <div className={"inline-container"}>
-                            <button className="previous" onClick={PreviousGame}> Précédent</button>
-                            <p className="font-face-florida"> just play it now </p>
-                            <button className="next" onClick={NextGame}> Suivant</button>
+                            <button className="previous" onClick={PreviousGame}> {lang === "en" ? "Previous" : "Précédent"}</button>
+                            <p className="font-face-florida"> {lang === "en" ? "just play it now" : "jouer maintenant"} </p>
+                            <button className="next" onClick={NextGame}> {lang === "en" ? "Next" : "Suivant"} </button>
                             <button className="fullscreen" onClick={Fullscreen}></button>
                         </div>
 
