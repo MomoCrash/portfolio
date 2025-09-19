@@ -13,6 +13,17 @@
     text-align: center;
 }
 
+.lang-container {
+    position: absolute;
+    width: 120px;
+    height: 70px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    top: 60px;
+    right: 20px;
+}
+
 .container {
     position: relative;
     display: flex;
@@ -85,11 +96,14 @@
 }
 
 .profile-description {
+    position: relative;
+    left: 50px;
     font-family: CaviarDreams;
     font-size: 30px;
     width: 500px;
     text-align:left;
     color: whitesmoke;
+
 }
 
 .spaced {
@@ -238,6 +252,22 @@
 
     justify-content: center;
 }
+
+.image-fr {
+    width: 60px;
+    height: 40px;
+    background-image: url("../../public/fr.png");
+    background-size: 100%;
+}
+
+.image-en {
+    width: 60px;
+    height: 40px;
+    background-image: url("../../public/en.png");
+    background-size: 100%;
+    background-position: 0 -8px;
+}
+
 
 .image-website {
     background-image: url("../../public/website.png");
@@ -548,6 +578,11 @@ button:hover .button-text {
         padding-left: 0;
     }
 
+    .lang-container {
+        top: 50px;
+        right: 00px;
+    }
+
     .projet-tag {
         display: flex;
         width: 60px;
@@ -583,6 +618,8 @@ button:hover .button-text {
     .profile-description {
         width: 100%;
         text-align: center;
+        position: static;
+        left: 50px;
     }
 
     #project {
