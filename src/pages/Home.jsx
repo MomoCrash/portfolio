@@ -39,11 +39,13 @@ export default function Home() {
             try {
                 localStorage.setItem('lang', lang);
             } catch (e) {
+                // PASS
             }
 
             try {
                 window.dispatchEvent(new CustomEvent('langChanged', { detail: lang }));
             } catch (e) {
+                // PASS
             }
         }
     }, [lang]);
@@ -265,7 +267,7 @@ export default function Home() {
 
     const [hiddenTagButtons, setHiddenTagButtons] = useState([]);
 
-    // expose functions to hide/show tag buttons only (does not remove labels on cards)
+    // expose functions to hide/show tag buttons only
     useEffect(() => {
         window.hideTagButton = (tag) => {
             if (!tag) return;
