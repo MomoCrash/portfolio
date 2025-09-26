@@ -17,7 +17,7 @@ function App() {
   return (
       <>
 
-          <BrowserRouter basename="/portfolio/" future={{ v7_startTransition: true }}>
+          <BrowserRouter basename="/" future={{ v7_startTransition: true }}>
               <Routes>
                   <Route path="/" element={<Layout/>}>
                       <Route index element={<Home />} />
