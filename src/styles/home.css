@@ -293,6 +293,18 @@
     background-repeat: no-repeat;
 }
 
+.project-tag-list {
+    visibility: visible;
+    
+    display: flex;
+    
+}
+
+.mobile-project-tag-list {
+    visibility: hidden;
+    
+    height: 0;
+}
 
 .projet-tag {
     font-family: CaviarDreams;
@@ -302,7 +314,7 @@
     margin: auto 0 auto 5px;
     font-size: x-large;
     height: 30px;
-    padding: 0 10px;
+    padding: 0 5px;
 }
 
 .percent-bar {
@@ -582,6 +594,24 @@ button:hover .button-text {
         top: 50px;
         right: 00px;
     }
+    
+    .project-tag-list {
+        visibility: hidden;
+        height: 0;
+        width: 0;
+
+    }
+
+    .mobile-project-tag-list {
+        visibility: visible;
+        margin-left: 10px;
+        height: auto;
+        width: auto;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 
     .projet-tag {
         display: flex;
@@ -589,7 +619,7 @@ button:hover .button-text {
         height: 30px;
         font-size: 1rem;
         text-align: center;
-        padding: 0;
+        padding: 0 38px;
         margin: 5px 2px;
         justify-content: center;
         align-items: center;

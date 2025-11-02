@@ -66,11 +66,15 @@ function Navbar() {
             {windowDimensions.width < 1050 ? <Link to='/' className={"logo"}> Mon portfolio </Link> : ""}
             <ul className={isActive ? "navMenu active" : 'navMenu'}>
                 <li onClick={removeActive}>
-                    <a href={IsHome() ? "#" : "/"} className="navLink">{lang === 'en' ? 'Links' : 'Mes liens'} <span className={"pprogress-bar"}> <span
+                    <a href={IsHome() ? "#" : "/"} className="navLink">{'Hub'} <span className={"pprogress-bar"}> <span
                         className={"pprogress-bar-percent"}></span> </span> </a>
                 </li>
                 <li onClick={removeActive}>
                     <a href={IsHome() ? "#projects" : "/"} className="navLink"> {lang === "en" ? "My projects" : "Mes projets" }  <span className={"pprogress-bar"}> <span
+                        className={"pprogress-bar-percent"}></span> </span> </a>
+                </li>
+                <li onClick={removeActive}>
+                    <a href={"/games"} className="navLink">{lang === 'en' ? 'My games' : 'Mes jeux'} <span className={"pprogress-bar"}> <span
                         className={"pprogress-bar-percent"}></span> </span> </a>
                 </li>
                 <li onClick={removeActive}>

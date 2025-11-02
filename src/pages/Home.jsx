@@ -1,5 +1,4 @@
 import "../styles/home.css"
-import { Unity, useUnityContext  } from "react-unity-webgl"
 import React, {useEffect, useState} from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -30,6 +29,8 @@ function LazyIframe({ src, title, className }) {
         </div>
     );
 }
+
+
 
 export default function Home() {
     const initialLang = (typeof window !== 'undefined' && localStorage.getItem('lang')) || 'en';
@@ -77,7 +78,7 @@ export default function Home() {
             percent: [50, 25, 25],
             desc: "Breachborn est un jeu 3D dans le style rogue-like. Dans un monde fantastique en pleine destruction. Faites de votre village le rempart de l'humanité, relevez vous de chacune de vos morts plus fort, aiguisez au maximum le choix de vos équipements. Parcourez une infinité d'îles procédurales.",
             desc_en: "Breachborn is a 3D rogue-like game set in a fantasy world in ruins. Defend your village, come back stronger after each death, customize your gear, and explore an endless chain of procedurally generated islands.",
-            link: "",
+            link: "https://discord.gg/nBv3u7bwqN",
             imageType: "image",
             imageClass: "image-breachborn"
         },
@@ -120,6 +121,26 @@ export default function Home() {
             link: "https://github.com/MomoCrash/MIRD",
             imageType: "iframe",
             imageSrc: "https://www.youtube.com/embed/QEAM5Ok1Sfg?si=P4eF4k2Xae7HeSQv?&autoplay=1&mute=1&loop=1"
+        },
+        {
+            title: "Rebreaker",
+            title_en: "Rebreaker",
+            tags: [
+                { label: "C++", color: "#53c2fe" },
+                { label: "Cours", color: "#f59e26" },
+                { label: "Jeu", color: "#fee971" }
+            ],
+            skills: [
+                { label: "2D Game", label_en: "2D Game", color: "#fff47f" },
+                { label: "Game Engine", label_en: "Game Engine", color: "lightskyblue" },
+                { label: "Juiciness", label_en: "Juiciness", color: "indianred" }
+            ],
+            percent: [30, 30, 40],
+            desc: "ReBreaker, est une réplique d'un Casse-Brique dans une version surbooster, avec pour objectif un maximum de feedbacks visuels, d'animation d'explosion et de dynamisme !!",
+            desc_en: "ReBreaker is an enhanced Breakout clone focused on strong visual feedback, explosion animations and dynamic gameplay!",
+            link: "https://github.com/MomoCrash/ReBreaker",
+            imageType: "iframe",
+            imageSrc: "https://www.youtube.com/embed/NSxrJB3lpgI?si=dv7hXxQDChQ8zmGi?&autoplay=1&mute=1&loop=1"
         },
         {
             title: "Rebreaker",
@@ -371,123 +392,6 @@ export default function Home() {
         return () => clearTimeout(exitTimer);
     }, [activeTag, projects]);
 
-    const useCheckMobileScreen = () => {
-        const [width, setWidth] = useState(window.innerWidth);
-        const handleWindowSizeChange = () => {
-            setWidth(window.innerWidth);
-        }
-
-        useEffect(() => {
-            window.addEventListener('resize', handleWindowSizeChange);
-            return () => {
-                window.removeEventListener('resize', handleWindowSizeChange);
-            }
-        }, []);
-
-        return (width <= 768);
-    }
-
-    const projectDescription = [
-        <>
-            <div className={"project-desc-big"}>
-                {lang === 'en' ? 
-                    "Adventure's Horizon is a die & retry game where your mission is to progress through a dangerous mountain: defeat monsters, die, buy better gear and go further each run." :
-                    "Adventure's Horizon est un jeu Die & Retry, vous avez pour mission de progresser dans une montagne pleine de danger : tuez les monstres, mourrez, achetez de l'équipement et allez plus loin à chaque run."
-                }
-            </div>
-        </>,
-
-        <>
-            <div className={"project-desc-big"}>
-                {lang === 'en' ?
-                    "Nichii is a mobile game project developed alongside Unity courses. It's an idle farmer where you aim to gather and process resources to grow your town." :
-                    "Nichii est un projet de jeu mobile, développé en parallèle des cours sur Unity. C'est un idle où vous devez collecter et transformer des ressources pour développer votre ville."
-                }
-            </div>
-        </>
-    ]
-
-    function LoadUnityPlayer() {
-
-        if (!useCheckMobileScreen()) {
-
-            const unityProviders = [
-                useUnityContext({
-                    loaderUrl: "horizon/horizon.loader.js",
-                    dataUrl: "horizon/horizon.data.br",
-                    frameworkUrl: "horizon/horizon.js.br",
-                    codeUrl: "horizon/horizon.wasm.br"
-                })]
-
-            if (localStorage.getItem("currentGame") >= unityProviders.length) {
-                localStorage.setItem("currentGame", "0")
-            }
-
-
-            function PreviousGame() {
-                let currentGame = parseInt(localStorage.getItem("currentGame")) || 1;
-                currentGame = (currentGame - 1) % unityProviders.length
-                localStorage.setItem("currentGame", currentGame.toString())
-                window.location.reload()
-            }
-
-            function NextGame() {
-                let currentGame = parseInt(localStorage.getItem("currentGame")) || 0;
-                currentGame = (currentGame + 1) % unityProviders.length
-                localStorage.setItem("currentGame", currentGame.toString())
-                window.location.reload()
-            }
-
-            function Fullscreen() {
-                unityProviders[localStorage.getItem("currentGame") ? parseInt(localStorage.getItem("currentGame")) : 0].requestFullscreen(true);
-            }
-
-            return (<>
-                <div id={"game"} className={"container"}>
-
-                    <div className={"game-preview-card"}>
-
-                        <h2 className={"font-face-florida title-name"}> {lang === "en" ? "my games" : "mes jeux"} </h2>
-                        {projectDescription[localStorage.getItem("currentGame") ? parseInt(localStorage.getItem("currentGame")) : 0]}
-                        <Unity className={"game-preview"}
-                               unityProvider={unityProviders[localStorage.getItem("currentGame") ? parseInt(localStorage.getItem("currentGame")) : 0].unityProvider}>
-                        </Unity>
-
-                        <div className={"inline-container"}>
-                            <button className="previous" onClick={PreviousGame}> {lang === "en" ? "Previous" : "Précédent"}</button>
-                            <p className="font-face-florida"> {lang === "en" ? "just play it now" : "jouer maintenant"} </p>
-                            <button className="next" onClick={NextGame}> {lang === "en" ? "Next" : "Suivant"} </button>
-                            <button className="fullscreen" onClick={Fullscreen}></button>
-                        </div>
-
-                    </div>
-
-                </div>
-            </>)
-
-        }
-
-        return (<></>)
-
-    }
-
-
-    // function SkillPoint(string, number) {
-    //     return (<>
-    //         <p className={"project-objectives"}> {string} </p>
-    //         <ul className={"container in-row"}>
-    //             {[...Array(number)].map((x, i) =>
-    //                 <li key={i} className={"project-bullet"}></li>
-    //             )}
-    //                 {[...Array(5-number)].map((x, i) =>
-    //                     <li key={i} className={"project-bullet"}>
-    //                         <span className={"project-bullet plain"}></span>
-    //                     </li>
-    //                 )}
-    //             </ul>
-    //         </>);
-    // }
-
     function PercentBar(name, first, second, third) {
         return (<>
             <p className={"project-objectives"}> {name} </p>
@@ -528,7 +432,7 @@ export default function Home() {
                             <div
                                 className={"font-face-florida profile-name"}>{lang === 'en' ? 'Ethan Gilotin' : 'Gilotin Ethan'}</div>
                             <div
-                                className={"profile-description"}>{lang === 'en' ? 'Programming student' : 'Étudiant en Programmation'}</div>
+                                className={"profile-description"}>{lang === 'en' ? 'Junior C++ Developer' : 'Développeur Junior C++'}</div>
 
                             <div className={"container in-row-forced"}>
 
@@ -572,7 +476,7 @@ export default function Home() {
                     <div id={"contact"} className={"card mobile-xs"}>
 
                         <div className={"container in-row justify-start"}>
-                            <p className={"project-desc"} style={{maxWidth: "100%", fontSize: "1.5rem"}}>
+                            <p className={"project-desc"} style={{maxWidth: "100%", fontSize: "1.4rem"}}>
                                 {lang === 'en' ? (
                                     <>Interested in my projects or want to get in touch? Send me an email: <br/> <a href={"mailto:ethan.gilotin@gmail.com"}> ethan.gilotin@gmail.com </a></>
                                         ) : (
@@ -583,10 +487,6 @@ export default function Home() {
                             </div>
 
                 </div>
-
-                {
-                    LoadUnityPlayer()
-                }
 
                 <div id={"projects"} className="tag-buttons-container">
                     <button
@@ -617,14 +517,21 @@ export default function Home() {
                             <div
                                 className={cardClass}
                                 key={project.title + idx}
-                                style={{ animationDelay: `${idx * 60}ms` }}
-                            >
+                                style={{ animationDelay: `${idx * 60}ms` }}>
                                 <div className={"container in-row-forced justify-start"}>
                                     <h2 className={"font-face-florida title-name"}>{lang === 'en' ? (project.title_en || project.title) : project.title}</h2>
+                                    <div className={"project-tag-list"}>
+                                        {project.tags.map((tag, i) => (
+                                            <h2 className={"projet-tag"} style={{ backgroundColor: tag.color }} key={i}>{displayTag(tag.label)}</h2>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className={"mobile-project-tag-list"}>
                                     {project.tags.map((tag, i) => (
                                         <h2 className={"projet-tag"} style={{ backgroundColor: tag.color }} key={i}>{displayTag(tag.label)}</h2>
                                     ))}
                                 </div>
+
                                 <div className={"container in-row justify-start"}>
                                     {project.imageType === "image" ? (
                                         <a className={`project-image ${project.imageClass}`}></a>

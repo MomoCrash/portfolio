@@ -4,6 +4,7 @@ import Home from "./pages/Home.jsx";
 import Layout from "./pages/Layout.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Credits from "./pages/credits.jsx";
+import Game from "./pages/Game.jsx";
 
 let location;
 
@@ -22,6 +23,7 @@ function App() {
                   <Route path="/" element={<Layout/>}>
                       <Route index element={<Home />} />
                       <Route path={"/credits"} element={<Credits />} />
+                      <Route path={"/games"} element={<Game />} />
                       <Route path={"/*"} element={<NotFound />} />
                   </Route>
               </Routes>
