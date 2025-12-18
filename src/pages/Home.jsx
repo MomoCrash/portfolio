@@ -1,6 +1,7 @@
 import "../styles/home.css"
 import React, {useEffect, useState} from "react";
 import { useInView } from "react-intersection-observer";
+import {useLocation} from "react-router-dom"
 
 // LazyIframe: only sets iframe src when it becomes visible
 function LazyIframe({ src, title, className }) {
@@ -10,7 +11,7 @@ function LazyIframe({ src, title, className }) {
     useEffect(() => {
         if (inView && !loadedSrc) setLoadedSrc(src);
     }, [inView, src, loadedSrc]);
-
+    
     return (
         <div ref={ref}>
             {loadedSrc ? (
@@ -30,7 +31,18 @@ function LazyIframe({ src, title, className }) {
     );
 }
 
+function FocusOnSearch(hash) {
+    let element = document.getElementById(hash.replace("#", ""));
 
+    if (element !== null) {
+        console.log(element)
+        
+        window.scrollTo({
+            top: element.getBoundingClientRect().top + window.scrollY,
+            behavior: "instant"
+        })
+    }
+}
 
 export default function Home() {
     const initialLang = (typeof window !== 'undefined' && localStorage.getItem('lang')) || 'en';
@@ -59,6 +71,13 @@ export default function Home() {
 
     const displayTag = (label) => (lang === 'en' ? (tagTranslations[label] || label) : label);
 
+
+    const { hash } = useLocation();
+    
+    useEffect(() => {
+        setTimeout(FocusOnSearch, 200, hash);
+    }, [hash])
+    
     // Project data array
     const [projects, setProjects] = useState([
         {
@@ -492,9 +511,12 @@ export default function Home() {
                         if (isExiting) cardClass += ' exit-right';
                         else if (isEntering) cardClass += ' enter-left';
                         else if (initialMount) cardClass += ' animate-in';
-
+                        
+                        const formatedId = project.title.toLowerCase().replace(" ", "_");
+                        
                         return (
                             <div
+                                id={formatedId}
                                 className={cardClass}
                                 key={project.title + idx}
                                 style={{ animationDelay: `${idx * 60}ms` }}>
