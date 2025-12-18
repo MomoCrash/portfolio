@@ -73,10 +73,10 @@ function Navbar() {
                     <a href={IsHome() ? "#projects" : "/"} className="navLink"> {lang === "en" ? "My projects" : "Mes projets" }  <span className={"pprogress-bar"}> <span
                         className={"pprogress-bar-percent"}></span> </span> </a>
                 </li>
-                <li onClick={removeActive}>
-                    <a href={"/games"} className="navLink">{lang === 'en' ? 'My games' : 'Mes jeux'} <span className={"pprogress-bar"}> <span
-                        className={"pprogress-bar-percent"}></span> </span> </a>
-                </li>
+                {/*<li onClick={removeActive}>*/}
+                {/*    <a href={"/games"} className="navLink">{lang === 'en' ? 'My games' : 'Mes jeux'} <span className={"pprogress-bar"}> <span*/}
+                {/*        className={"pprogress-bar-percent"}></span> </span> </a>*/}
+                {/*</li>*/}
                 <li onClick={removeActive}>
                     <a href={IsHome() ? "#contact" : "/"} className="navLink"> {lang === 'en' ? 'Contact me' : 'Me contacter'} <span className={"pprogress-bar"}> <span
                         className={"pprogress-bar-percent"}></span> </span></a>

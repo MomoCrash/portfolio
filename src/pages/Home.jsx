@@ -143,26 +143,6 @@ export default function Home() {
             imageSrc: "https://www.youtube.com/embed/NSxrJB3lpgI?si=dv7hXxQDChQ8zmGi?&autoplay=1&mute=1&loop=1"
         },
         {
-            title: "Rebreaker",
-            title_en: "Rebreaker",
-            tags: [
-                { label: "C++", color: "#53c2fe" },
-                { label: "Cours", color: "#f59e26" },
-                { label: "Jeu", color: "#fee971" }
-            ],
-            skills: [
-                { label: "2D Game", label_en: "2D Game", color: "#fff47f" },
-                { label: "Game Engine", label_en: "Game Engine", color: "lightskyblue" },
-                { label: "Juiciness", label_en: "Juiciness", color: "indianred" }
-            ],
-            percent: [30, 30, 40],
-            desc: "ReBreaker, est une réplique d'un Casse-Brique dans une version surbooster, avec pour objectif un maximum de feedbacks visuels, d'animation d'explosion et de dynamisme !!",
-            desc_en: "ReBreaker is an enhanced Breakout clone focused on strong visual feedback, explosion animations and dynamic gameplay!",
-            link: "https://github.com/MomoCrash/ReBreaker",
-            imageType: "iframe",
-            imageSrc: "https://www.youtube.com/embed/NSxrJB3lpgI?si=dv7hXxQDChQ8zmGi?&autoplay=1&mute=1&loop=1"
-        },
-        {
             title: "Adventure's Horizon",
             title_en: "Adventure's Horizon",
             tags: [
