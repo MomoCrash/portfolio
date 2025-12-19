@@ -98,8 +98,8 @@ export default function Home() {
             desc: "Breachborn est un jeu 3D dans le style rogue-like. Dans un monde fantastique en pleine destruction. Faites de votre village le rempart de l'humanité, relevez vous de chacune de vos morts plus fort, aiguisez au maximum le choix de vos équipements. Parcourez une infinité d'îles procédurales.",
             desc_en: "Breachborn is a 3D rogue-like game set in a fantasy world in ruins. Defend your village, come back stronger after each death, customize your gear, and explore an endless chain of procedurally generated islands.",
             link: "https://discord.gg/nBv3u7bwqN",
-            imageType: "image",
-            imageClass: "image-breachborn"
+            imageType: "iframe",
+            imageSrc: "https://www.youtube.com/embed/j0BohaNtQfQ?si=bxSf9-DXQZr4mgkA?&autoplay=1&mute=1&loop=1"
         },
         {
             title: "Paper Strike",
