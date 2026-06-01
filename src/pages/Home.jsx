@@ -122,6 +122,26 @@ export default function Home() {
             imageClass: "image-paperstrike"
         },
         {
+            title: "Ruins of Hestia",
+            title_en: "Ruins of Hestia",
+            tags: [
+                { label: "C++", color: "#53c2fe" },
+                { label: "Cours", color: "#f59e26" },
+                { label: "Jeu", color: "#fee971" }
+            ],
+            skills: [
+                { label: "Vulkan", label_en: "Vulkan", color: "#fff47f" },
+                { label: "Architecture", label_en: "Architecture", color: "lightskyblue" },
+                { label: "Gameplay", label_en: "Gameplay", color: "indianred" }
+            ],
+            percent: [50, 30, 20],
+            desc: "Écrasé sur Hestia, vous incarnez Cali. Secourue par la population locale. Vous êtes, après nombre d'exploit reconnue pour vos compétences, et devenez chef du village. Dans un monde corrompu par une force aux dessus des lois d’Hestia. Gérez l'expansion de votre village, partez à l’exploration des contrées alentours.",
+            desc_en: "Stranded on Hestia, you play as Cali, rescued by the local villagers. After many achievements that prove your skills, you become the leader of the village. In a world corrupted by a force beyond the laws of Hestia, manage the growth of your village, explore the surrounding lands, and gather your strength to save Hestia from corruption.",
+            link: "https://github.com/MomoCrash/Ruins-Of-Hestia-public",
+            imageType: "iframe",
+            imageSrc: "https://www.youtube.com/embed/GrtCGJMGqt4?si=FpYyZZwI8rZn4S1c?&autoplay=1&mute=1&loop=1"
+        },
+        {
             title: "Projet MIRD",
             title_en: "MIRD Project",
             tags: [
@@ -140,6 +160,26 @@ export default function Home() {
             link: "https://github.com/MomoCrash/MIRD",
             imageType: "iframe",
             imageSrc: "https://www.youtube.com/embed/QEAM5Ok1Sfg?si=P4eF4k2Xae7HeSQv?&autoplay=1&mute=1&loop=1"
+        },
+        {
+            title: "Moteur Audio",
+            title_en: "Audio Engine",
+            tags: [
+                { label: "C++", color: "#53c2fe" },
+                { label: "Cours", color: "#f59e26" },
+                { label: "Projet", color: "#fee971" }
+            ],
+            skills: [
+                { label: "Threads", label_en: "Threads", color: "#fff47f" },
+                { label: "WAV", label_en: "Parse WAV", color: "lightskyblue" },
+                { label: "UI/UX", label_en: "UI/UX", color: "indianred" }
+            ],
+            percent: [40, 30, 30],
+            desc: "Ce moteur audio permet la lecture et l’assemblage de plusieurs échantillons audio. Dans chaque canal audio, vous pouvez modifier le son, ajuster le volume et appliquer différents effets. Les effets disponibles incluent : son 3D, mini égaliseur (Mini EQ) et trémolo.",
+            desc_en: "This audio engine allows the playback and seamless chaining of multiple audio samples. In each audio channel, you can edit the sound, adjust the volume, and apply various effects. Available effects include: 3D sound, Mini EQ, and Tremolo.",
+            link: "https://github.com/MomoCrash/ReBreaker",
+            imageType: "iframe",
+            imageSrc: "https://www.youtube.com/embed/nM82ARQD9Q8?si=Iav6uFXdQzUc_QrG?&autoplay=1&mute=1&loop=1"
         },
         {
             title: "Rebreaker",
@@ -230,8 +270,8 @@ export default function Home() {
                 { label: "Website", color: "#fee971" }
             ],
             skills: [
-                { label: "Backend", label_en: "Backend", color: "#fff47f" },
-                { label: "Database", label_en: "Database", color: "lightskyblue" },
+                { label: "Express.JS", label_en: "Express.JS", color: "#fff47f" },
+                { label: "SQL", label_en: "SQL", color: "lightskyblue" },
                 { label: "Riot API", label_en: "Riot API", color: "indianred" }
             ],
             percent: [40, 30, 30],
@@ -240,6 +280,26 @@ export default function Home() {
             link: "https://momocrash.github.io/Beacon/",
             imageType: "image",
             imageClass: "image-beacon"
+        },
+        {
+            title: "Portfolio",
+            title_en: "Portfolio",
+            tags: [
+                { label: "ReactJS", color: "#53c2fe" },
+                { label: "Personnel", color: "#f59e26" },
+                { label: "Website", color: "#fee971" }
+            ],
+            skills: [
+                { label: "Frontend", label_en: "Frontend", color: "#fff47f" },
+                { label: "Organisation", label_en: "Organisation", color: "lightskyblue" },
+                { label: "UI / UX", label_en: "UI / UX", color: "indianred" }
+            ],
+            percent: [40, 20, 40],
+            desc: "Ce site web :D",
+            desc_en: "This website :D",
+            link: "https://ethan-gilotin.fr/",
+            imageType: "image",
+            imageClass: "image-portfolio"
         },
         {
             title: "Template Restaurant",
@@ -280,6 +340,26 @@ export default function Home() {
             link: "https://github.com/MomoCrash/NetworkProject",
             imageType: "iframe",
             imageSrc: "https://www.youtube.com/embed/vmt-WsIYRVI?si=GjEhPNZ6n4rLRwzD?&autoplay=1&mute=1&loop=1"
+        },
+        {
+            title: "Physic Engine",
+            title_en: "Physic Engine",
+            tags: [
+                { label: "C++", color: "#53c2fe" },
+                { label: "Projet", color: "#f59e26" },
+                { label: "Cours", color: "#fee971" }
+            ],
+            skills: [
+                { label: "Loi Physique", label_en: "Physical Law", color: "#fff47f" },
+                { label: "Réalisme", label_en: "Realism", color: "lightskyblue" },
+                { label: "Optimisiation", label_en: "Optimisation", color: "indianred" }
+            ],
+            percent: [40, 30, 30],
+            desc: "L’objectif de ce moteur physique est de démontrer l’application de la physique dans un environnement 3D. Le moteur implémente l’application de forces (friction, poids, gravité), la rotation, les réactions physiques et la collision de formes convexes (GJK, EPA), ainsi que des optimisations comme le partitionnement de l’espace.",
+            desc_en: "The goal of this physics engine is to demonstrate the application of physics in a 3D environment. The engine implements force applications (friction, weight, gravity), rotation, physical reactions, and collision handling for convex shapes (GJK, EPA), as well as optimizations such as space partitioning.",
+            link: "https://github.com/MomoCrash/physic-engine",
+            imageType: "iframe",
+            imageSrc: "https://www.youtube.com/embed/VdWYhIUJ8ns?si=6JZqy1Zfu2HmRIAE?&autoplay=1&mute=1&loop=1"
         }
     ]);
 

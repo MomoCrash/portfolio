@@ -281,6 +281,11 @@
     background-size: 100%;
 }
 
+.image-portfolio {
+    background-image: url("../../public/portfolio.png");
+    background-size: 100%;
+}
+
 .image-breachborn {
     background-image: url("../../public/breachborn.png");
     background-size: 120%;

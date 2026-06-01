@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc994f15-775f-4214-8532-fe2618d454a6" name="Changes" comment="Disable Games tab">
+      <change afterPath="$PROJECT_DIR$/public/portfolio.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/home.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,6 +136,13 @@
       <workItem from="1766082649036" duration="957000" />
       <workItem from="1766083981035" duration="3095000" />
       <workItem from="1766137230322" duration="359000" />
+      <workItem from="1779272444594" duration="709000" />
+      <workItem from="1779382033636" duration="3183000" />
+      <workItem from="1779444321130" duration="739000" />
+      <workItem from="1779790525147" duration="11000" />
+      <workItem from="1779966379890" duration="3124000" />
+      <workItem from="1780313661618" duration="1724000" />
+      <workItem from="1780346421717" duration="2330000" />
     </task>
     <task id="LOCAL-00001" summary="Update">
       <option name="closed" value="true" />
